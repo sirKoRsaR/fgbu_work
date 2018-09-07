@@ -28,8 +28,34 @@ class CamundaApi:
         request_string += getApiMethod
         return request_string
 
+    def get_process_definition(self, inMethod):
+        #request_str = self.get_request_string('/process-definition')
+        if inMethod == "stat":
+            request_str = self.get_request_string('/statistics')
+        elif inMethod in ('', 'all'):
+            request_str = self.get_request_string('/process-definition')
+        else:
+            print('Неверно указан параметр вызова API')
+        reqGetData = requests.get(request_str)
+        if reqGetData.status_code != 200:
+            exit('Server {} answer: {} {}'.format(self.serverName, reqGetData.status_code, reqGetData.content.decode('utf-8')))
+        return json.loads(reqGetData.content.decode('utf-8'))
+
+
+    def get_process_definition(self, inMethod):
+        #request_str = self.get_request_string('/process-definition')
+        if inMethod == "stat":
+            request_str = self.get_request_string('/process-definition/statistics')
+        else:
+            print('Неверно указан параметр вызова API')
+        reqGetData = requests.get(request_str)
+        if reqGetData.status_code != 200:
+            exit('Server {} answer: {} {}'.format(self.serverName, reqGetData.status_code, reqGetData.content.decode('utf-8')))
+        return json.loads(reqGetData.content.decode('utf-8'))
+
+
     def get_inc_count_by_type (self):
-        request_str = self.get_request_string('/process-instance/count')                # в доработку на отдельный метод
+        request_str = self.get_request_string('/process-definition/count')                # в доработку на отдельный метод
         print('Ведутся работы: ' + request_str)
         r = requests.get(request_str)
         if r.status_code != 200:
@@ -43,10 +69,7 @@ class CamundaApi:
         #result = json.loads(r.content.decode('utf-8'))
         #print(result[0:10])
 
-        #if r.status_code != 200:
-        #    exit('Server {} answer: {} {}'.format(self.serverName, r.status_code, r.content.decode('utf-8')))
-        #result = json.loads(r.content.decode('utf-8'))
-        # print(result)
+
         #for i in result:
         #    cou += 1
         #    print(i['id'])
@@ -55,11 +78,14 @@ class CamundaApi:
 if __name__ == '__main__':
 
     #server1 = CamundaApi()
-    print(len(shard_ppoz))
     print(camunda_shard[9])
 
     serverApiPpoz = [CamundaApi(camunda_shard[i]) for i in range(len(shard_ppoz))]
+    #result = serverApiPpoz[3].get_process_definition('')
     #print(len(serverApiPpoz))
-
-    serverApiPpoz[3].get_inc_count_by_type()
+    cou = 0
+    for i in serverApiPpoz[3].get_process_definition('stat'):
+        cou += 1
+        print ("ID: " + i['id'] + " NAME: " + i['definition']['name'] )
+        #print(i)
 
