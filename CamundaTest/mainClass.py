@@ -11,7 +11,6 @@
 import json
 import requests
 
-#shard_num =["00", "01", "02", "03", "04","05", "06", "07", "08", "09"]
 shard_ppoz = ["02", "04", "06", "08", "10", "12", "14", "16", "18", "20"]
 camunda_shard = ['http://ppoz-process-core-' + i + '.prod.egrn:9084'
                     for i in shard_ppoz ]
@@ -21,6 +20,14 @@ class CamundaApi:
 
     def __init__(self, serverName):
         self.serverName = serverName
+
+    def decorator(inFunction) -> object:
+        def __decorator__func(*args, **kwargs):
+            print('Running funcrion: ', inFunction.__name__)
+            result = func(*args, **kwargs)
+            print('Result: ', result)
+            return result
+        return __decorator__func
 
     def get_request_string(self, getApiMethod):
         request_string = self.serverName
@@ -48,6 +55,7 @@ class CamundaApi:
             request_str = self.get_request_string('/process-definition/statistics')
         else:
             print('Неверно указан параметр вызова API')
+        print("Вызов: " + request_str)
         reqGetData = requests.get(request_str)
         if reqGetData.status_code != 200:
             exit('Server {} answer: {} {}'.format(self.serverName, reqGetData.status_code, reqGetData.content.decode('utf-8')))
@@ -83,9 +91,8 @@ if __name__ == '__main__':
     serverApiPpoz = [CamundaApi(camunda_shard[i]) for i in range(len(shard_ppoz))]
     #result = serverApiPpoz[3].get_process_definition('')
     #print(len(serverApiPpoz))
-    cou = 0
-    for i in serverApiPpoz[3].get_process_definition('stat'):
-        cou += 1
-        print ("ID: " + i['id'] + " NAME: " + i['definition']['name'] )
+    for i in serverApiPpoz[2].get_process_definition('stat'):
+        print ("ID: " + i['id'] + " NAME: " + i['definition']['name'] + \
+               "(" + str(i['definition']['version']) + ")" + " Кол-во: " + str(i['instances']))
         #print(i)
 
