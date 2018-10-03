@@ -69,7 +69,7 @@ class MongoRequest:
                 # server_api_ppoz[num_of_shard].get_box_api(item_result['_id'])
 
                 # print(item_result)
-        print('Всего найдено ' + str(count_req) + ' обращений(я)1')
+        print('Всего найдено ' + str(count_req) + ' обращений(я)')
 
         # def open_files(self, in_file_name_type):
         #     obj_open_files = []

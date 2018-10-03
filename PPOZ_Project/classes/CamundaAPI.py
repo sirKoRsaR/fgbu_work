@@ -7,11 +7,17 @@ class CamundaAPI:
     def __init__(self, server_name):
         self.serverName = server_name
 
+    def api_req_starter(self):
+        self.get_box_api()
+
     def get_request_string(self, get_api_method):
         return self.serverName + '/engine-rest/engine/default' + get_api_method
 
     def get_server_name(self):
         return self.serverName
+
+    # def get_list_act_box_from_shard(self):
+    # TODO сборщик актуальных коробок в камундах
 
     @staticmethod
     def get_json_element(in_json, in_find_element):

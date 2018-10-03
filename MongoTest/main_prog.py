@@ -11,10 +11,13 @@ shard_ppoz_api = ["02", "04", "06", "08", "10", "12", "14", "16", "18", "20"]
 camunda_shard = ['http://ppoz-process-core-' + i + '.prod.egrn:9084'
                  for i in shard_ppoz_api]
 camunda_gmp = ['http://ppoz-gmp-process-01.prod.egrn:9080']
-timedelta_days = 1
-unload_in_files = 'yes'
+timedelta_days = 2
+unload_in_files = 'no'
 debug_start = 'no'
+get_from_ppoz = 'no'
+get_from_gmp = 'no'
 
+nowtime = datetime.datetime.now()
 
 class CamundaApi:
 
@@ -43,7 +46,6 @@ class CamundaApi:
             exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
                                                   req_get_data.content.decode('utf-8')))
         api_result = json.loads(req_get_data.content.decode('utf-8'))
-        # print(api_result)
         return api_result
 
     # def get_process_definition(self, inMethod):
@@ -104,6 +106,7 @@ class RequestMongo:
             for item_result in collection.find({
                 # '_id': 'PKPVDMFC-2018-08-22-071405',
                 'status': 'quittancesCreated',
+                # 'bpmNodeId.PPOZ': 'bpm_Shard_02',
                 # 'region': '24',
                 # 'processingFlags': None,
                 'processingFlags.sentToRegSystem': None,
@@ -127,16 +130,16 @@ class RequestMongo:
 
                 # print(item_result['_id'])
                 # server_api_ppoz[num_of_shard].get_box_api(item_result['_id'])
-                get_pid_api = server_api_ppoz[num_of_shard].get_json_element(server_api_ppoz[num_of_shard].
-                                                                             get_box_api(item_result['_id']),
-                                                                             'ppoz_gmp')
-                get_pid_api_gmp = \
-                    server_api_ppoz[num_of_shard].get_json_element(server_api_gmp[0].
-                                                                   get_box_api(item_result['gmpServiceRequestNumber']),
-                                                                   '')
-                # print(get_pid_api_gmp)
-                item_result['PPOZ'] = get_pid_api
-                item_result['GMP'] = get_pid_api_gmp
+                if get_from_ppoz == 'yes':
+                    get_pid_api = server_api_ppoz[num_of_shard].get_json_element(server_api_ppoz[num_of_shard].
+                                                                                 get_box_api(item_result['_id']),
+                                                                                 'ppoz_gmp')
+                    item_result['PPOZ'] = get_pid_api
+                if get_from_gmp == 'yes':
+                    get_pid_api_gmp = server_api_ppoz[num_of_shard].\
+                        get_json_element(server_api_gmp[0].
+                                         get_box_api(item_result['gmpServiceRequestNumber']), '')
+                    item_result['GMP'] = get_pid_api_gmp
 
                 if unload_in_files == unload_in_files:
                     self.write_data_in_file(item_result, num_of_shard)

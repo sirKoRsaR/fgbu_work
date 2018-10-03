@@ -2,6 +2,7 @@ import datetime
 import json
 import logging
 import requests
+import re
 from bson import json_util
 from pymongo import MongoClient
 
@@ -14,6 +15,8 @@ uri = '/engine-rest/engine/default/process-instance/'
 engine = '/engine-rest/engine/default'
 headers = {'Content-Type': 'application/json'}
 
+reg_key = re.compile(
+                '^(?:EPGU|MFC|OfSite|PKPVD|PKPVDMFC|Vedomstvo|BC|Other|US|Migr)-[0-9]{4}(?:-[0-9]{2}){2}-[0-9]{6}$')
 box = 'taskCheckChargeCreationStatus'
 
 restartBody ={"unfinished":True,"activityId":box,"startedAfter":"2018-09-05T00:00:00","startedBefore":"2018-09-09T11:00:00"}
@@ -35,11 +38,62 @@ restartBody_ = {
                 }]
                 }
 
+def get_activity(uri, id, activityName=False, activityType=False, processIId=False, Id=False):
+    """
+    Get incidents
+    :param uri: url to Camunda
+    :param filter_: filter string in message
+    :param activityId: activityId
+    :param no_retry_activityId:
+    :return: incidents
+    """
+
+    def get(g):
+        if not g:
+            return None
+        if g['childActivityInstances']:
+            return get(g['childActivityInstances'][0])
+        else:
+            return g['activityId'], g['activityName'],g['activityType'],g['processInstanceId'], g['id']
+
+    request_str = uri + engine + '/process-instance/'
+    request_str += id + '/activity-instances'
+    r = session.get(request_str)
+    if r.status_code == requests.codes.ok:
+        result = json.loads(r.content.decode('utf-8'))
+        aid, aidname, atype, pid, iid = get(result)
+        res = []
+        res.append(aid)
+        if activityName:
+            res.append(aidname)
+        if activityType:
+            res.append(atype)
+        if processIId:
+            res.append(pid)
+        if Id:
+            res.append(iid)
+        if len(res) == 1:
+            return res[0]
+        else:
+            return res
+    else:
+        return None
+
 def post_api():
     request_str = url + engine + '/history/activity-instance/'
     r = requests.post(request_str, json=restartBody, headers=headers)
     result = json.loads(r.content.decode('utf-8'))
     return result
+
+def load_id_from_file():
+    #for i in shard_ppoz:
+        file_name = 'log_gmp_' + 'bpm' + '.log'
+        f = open(file_name, 'r')
+        f_all = f.readlines()
+        for j in f_all:
+            # print(j)
+
+        f.close()
 
 class CamundaApi:
 
@@ -83,20 +137,21 @@ if __name__ == '__main__':
     serverApiPpoz = [CamundaApi(camunda_shard[i]) for i in range(len(shard_ppoz_api))]
     result =[]
     count = 0
-    for j in range(len(shard_ppoz_api)):
-        result = result + serverApiPpoz[j].get_proc_definition_gmp()
-        # print(result[j]['id'])
-    for i in range(9): #range(len(shard_ppoz_api)):
-        for n in serverApiPpoz[i].get_req_on_process_definition(result[i]['id']):
-            count = count + 1
-            if n['id'] == '0ee9ac43-c66d-11e8-9854-fa163e07674b':
-                r = requests.post(serverApiPpoz[i].get_name() + uri +
-                                  n['id'] + '/modification', json=restartBody_, headers=headers)
-                logging.info('BK: %s  , send post %s' % (n['id'], r))
-                # print(n['id'], r)
-            else:
-                logging.info('BK: %s  , send post %s' % (n['id'], 'Пропущена'))
-            # print(r)
+    load_id_from_file()
+    # for j in range(len(shard_ppoz_api)):
+    #     result = result + serverApiPpoz[j].get_proc_definition_gmp()
+    #     # print(result[j]['id'])
+    # for i in range(9): #range(len(shard_ppoz_api)):
+    #     for n in serverApiPpoz[i].get_req_on_process_definition(result[i]['id']):
+    #         count = count + 1
+    #         if n['id'] == '0ee9ac43-c66d-11e8-9854-fa163e07674b':
+    #             r = requests.post(serverApiPpoz[i].get_name() + uri +
+    #                               n['id'] + '/modification', json=restartBody_, headers=headers)
+    #             logging.info('BK: %s  , send post %s' % (n['id'], r))
+    #             # print(n['id'], r)
+    #         # else:
+    #         #     logging.info('BK: %s  , send post %s' % (n['id'], 'Пропущена'))
+    #         # print(r)
 
 
     #print(count)
