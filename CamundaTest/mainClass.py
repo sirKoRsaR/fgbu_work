@@ -24,7 +24,7 @@ class CamundaApi:
     def decorator(inFunction) -> object:
         def __decorator__func(*args, **kwargs):
             print('Running funcrion: ', inFunction.__name__)
-            result = func(*args, **kwargs)
+            result = __decorator__func(*args, **kwargs)
             print('Result: ', result)
             return result
         return __decorator__func

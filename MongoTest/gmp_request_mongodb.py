@@ -1,10 +1,11 @@
 from pymongo import MongoClient
 import json
 import datetime
-nowtime = datetime.datetime.now()
-
 from bson import json_util
 from pprint import pprint
+
+nowtime = datetime.datetime.now()
+
 
 shard_ppoz = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', 'error']
 outFiles = ['log_req_gmp_shard_' + i + '.log' for i in shard_ppoz]
@@ -19,13 +20,13 @@ for itemResult in coll.find({
                             # '_id': 'PKPVDMFC-2018-08-14-039594',
                             'status': 'quittancesCreated',
                             # 'region': '24',
-                           # 'processingFlags': None,
+                            # 'processingFlags': None,
                             'processingFlags.sentToRegSystem': None,
                             'lastActionDate': {'$lt': (nowtime - datetime.timedelta(days=1))}
                             },
                             {
                                 '_id': 1,
-                                'region':1,
+                                'region': 1,
                                 'gmpServiceRequestNumber': 1,
                                 'status': 1,
                                 'processingFlags': 1,
@@ -33,12 +34,12 @@ for itemResult in coll.find({
                                 'lastActionDate': 1
                             }):
     # .limit(10):
-   # print(json.loads(itemResult))
+    # print(json.loads(itemResult))
     countReq = countReq + 1
     # print(itemResult)
 
     # print(itemResult['bpmNodeId']['PPOZ'])
-    #print(itemResult['lastActionDate'])
+    # print(itemResult['lastActionDate'])
 
     if itemResult['bpmNodeId']['PPOZ'] == 'bpm':
         json.dump(itemResult, outFileOpen[0], default=json_util.default)
