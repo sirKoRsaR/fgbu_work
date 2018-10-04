@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59645009-a9a6-40fd-a0a6-d8f6a6fbef94" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Python_PsyCharm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Python_PsyCharm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CamundaTest/Unload_Gmp_Restart.py" beforeDir="false" afterPath="$PROJECT_DIR$/CamundaTest/Unload_Gmp_Restart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MongoTest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MongoTest/main_prog.py" beforeDir="false" afterPath="$PROJECT_DIR$/MongoTest/main_prog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/.idea/dictionaries/EvstigneevKA.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/.idea/dictionaries/EvstigneevKA.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/classes/CamundaAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/classes/CamundaAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PPOZ_Project/classes/ChatRoom.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/classes/ChatRoom.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/classes/MongoRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/classes/MongoRequest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/start_process.py" afterDir="false" />
     </list>
@@ -62,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CamundaTest/mainClass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
+            <state relative-caret-position="427">
               <caret line="74" column="38" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
               <folding>
                 <element signature="e#324#335#0" expanded="true" />
@@ -76,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CamundaTest/Unload_Gmp_Restart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-766">
-              <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+            <state relative-caret-position="543">
+              <caret line="156" column="17" lean-forward="true" selection-start-line="156" selection-start-column="17" selection-end-line="156" selection-end-column="17" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
                 <marker date="1538582804938" expanded="true" signature="2949:3154" ph="..." />
@@ -91,7 +85,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MongoTest/main_prog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
+            <state relative-caret-position="-443">
               <caret line="76" column="29" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -135,7 +129,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="378" />
     <option name="width" value="1472" />
     <option name="height" value="1057" />
@@ -322,8 +316,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="378" y="0" width="1472" height="1057" extended-state="1" />
-    <editor active="true" />
+    <frame x="378" y="0" width="1472" height="1057" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13319387" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -371,9 +364,19 @@
     <entry file="file://$PROJECT_DIR$/CamundaTest/1.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/MongoTest/main_prog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-443">
+          <caret line="76" column="29" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CamundaTest/mainClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
+        <state relative-caret-position="427">
           <caret line="74" column="38" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
           <folding>
             <element signature="e#324#335#0" expanded="true" />
@@ -383,20 +386,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MongoTest/main_prog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="76" column="29" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CamundaTest/Unload_Gmp_Restart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-766">
-          <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+        <state relative-caret-position="543">
+          <caret line="156" column="17" lean-forward="true" selection-start-line="156" selection-start-column="17" selection-end-line="156" selection-end-column="17" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
             <marker date="1538582804938" expanded="true" signature="2949:3154" ph="..." />
