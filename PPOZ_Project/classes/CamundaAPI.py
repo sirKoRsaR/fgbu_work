@@ -49,17 +49,19 @@ class CamundaAPI:
         return api_result
 
     def get_api_variable(self, in_json, in_variable):
+        if in_json is None or in_variable is None:
+            return
         for i in in_json:
-            request_str = self.get_request_string('/process-instance/' + i['id'] + '/variables/' + in_variable)
-            req_get_data = session.get(request_str)
-            if req_get_data.status_code != 200:
-                pass
-                # exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
-                #                                       req_get_data.content.decode('utf-8')))
-            api_result = json.loads(req_get_data.content.decode('utf-8'))
-            i[in_variable] = api_result#[in_variable]
-            # print(i)
-            req_get_data.close()
+            for j in in_variable:
+                request_str = self.get_request_string('/process-instance/' + i['id'] + '/variables/' + j)
+                req_get_data = session.get(request_str)
+                if req_get_data.status_code != 200:
+                    pass
+                    # exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
+                    #                                       req_get_data.content.decode('utf-8')))
+                api_result = json.loads(req_get_data.content.decode('utf-8'))
+                i[j] = api_result
+                req_get_data.close()
         # return api_result
 
     def get_camunda_process_on_activity(self, in_activity=None, return_type='count'):
@@ -83,8 +85,8 @@ class CamundaAPI:
                                                           req_get_data.content.decode('utf-8')))
                 api_result = json.loads(req_get_data.content.decode('utf-8'))
                 add_variable = 'true'
-                # if add_variable == 'true':  # добавляем значения по переменным
-                #     self.get_api_variable(api_result, 'expireDate')
+                if add_variable == 'true':  # добавляем значения по переменным
+                    self.get_api_variable(api_result, ['expireDate'])
                 api_result_array[in_activity[i]] = api_result
                 req_get_data.close()
             elif return_type == 'count':

@@ -5,7 +5,7 @@ import classes.CamundaAPI as CamundaAPI
 import sys
 import datetime
 import logging
-from dateutil import parser
+
 
 param_list = {'MongoDB_req': ''}
 
