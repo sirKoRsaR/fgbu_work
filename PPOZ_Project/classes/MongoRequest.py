@@ -85,12 +85,12 @@ class MongoRequest:
             },
             {
                 '_id': 1,
-                'region': 1,
                 'status': 1,
-                'gmpServiceRequestNumber': 1,
-                'bpmNodeId.PPOZ': 1,
-                'lastActionDate': 1
+                'lastUpdated': 1,
+                'expireDate': 1,
+                'receivedDate': 1
             })
+        # print(in_gmp + ' отработан')
         return item_result
 
         # def open_files(self, in_file_name_type):

@@ -13,6 +13,7 @@ adapter = HTTPAdapter(max_retries=retry)
 session.mount('http://', adapter)
 session.mount('https://', adapter)
 
+
 class CamundaAPI:
 
     def __init__(self, server_name):
@@ -47,7 +48,21 @@ class CamundaAPI:
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         return api_result
 
-    def get_camunda_process_on_activity(self, in_activity='taskCheckPaymentStatus', return_type='count'):
+    def get_api_variable(self, in_json, in_variable):
+        for i in in_json:
+            request_str = self.get_request_string('/process-instance/' + i['id'] + '/variables/' + in_variable)
+            req_get_data = session.get(request_str)
+            if req_get_data.status_code != 200:
+                pass
+                # exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
+                #                                       req_get_data.content.decode('utf-8')))
+            api_result = json.loads(req_get_data.content.decode('utf-8'))
+            i[in_variable] = api_result#[in_variable]
+            # print(i)
+            req_get_data.close()
+        # return api_result
+
+    def get_camunda_process_on_activity(self, in_activity=None, return_type='count'):
         """
         Функция возвращает json  с данными по коробкам
         :param in_activity: список имен коробок
@@ -61,12 +76,15 @@ class CamundaAPI:
             print(f'{Fore.LIGHTBLUE_EX}{Style.DIM}'
                   f'\tСчитываем коробку {in_activity[i]} ...')
             if return_type == 'json':
-                request_str = self.get_request_string('/process-instance?activityIds=' + in_activity[i])
+                request_str = self.get_request_string('/process-instance?activityIdIn=' + in_activity[i])
                 req_get_data = session.get(request_str)
                 if req_get_data.status_code != 200:
                     exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
                                                           req_get_data.content.decode('utf-8')))
                 api_result = json.loads(req_get_data.content.decode('utf-8'))
+                add_variable = 'true'
+                # if add_variable == 'true':  # добавляем значения по переменным
+                #     self.get_api_variable(api_result, 'expireDate')
                 api_result_array[in_activity[i]] = api_result
                 req_get_data.close()
             elif return_type == 'count':
