@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59645009-a9a6-40fd-a0a6-d8f6a6fbef94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PPOZ_Project/classes/Logging.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PPOZ_Project/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/classes/CamundaAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/classes/CamundaAPI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PPOZ_Project/classes/Logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/classes/Logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PPOZ_Project/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/start_process.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

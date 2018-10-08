@@ -3,24 +3,14 @@ import config
 import classes.MongoRequest as MongoRequest
 import classes.CamundaAPI as CamundaAPI
 import sys
-import datetime
-import logging
-
+# import datetime
 
 param_list = {'MongoDB_req': ''}
 
 if __name__ == '__main__':
     args = sys.argv
 
-    logger = logging.getLogger("incidents_stat")
-    logger.setLevel(logging.INFO)
-    logging.basicConfig(level=logging.INFO, filename='api_gmp_mongo.log')
-    fh = logging.FileHandler("logFile.log")
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    fh.setFormatter(formatter)
-    logger.addHandler(fh)
-
-    # chat_room.get_initial_param(param_list)
+    chat_room.get_initial_param(param_list)
     # if param_list['MongoDB_req'] == 'test':
     #     server_api_ppoz = [CamundaAPI.CamundaAPI(config.camunda_shard[i]) for i in range(len(config.shard_ppoz_num))]
     #     server_api_ppoz.api_req_starter()
@@ -28,11 +18,11 @@ if __name__ == '__main__':
     #     request_in_mongodb = MongoRequest.MongoRequest(param_list)
     #     request_in_mongodb.mongo_req_starter()
     # chat_room.get_final()
-    return_type = 'json'
+    return_type = 'count'
 
-    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)  # Инициализация камунды ГМП
-    server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')  # Инициализация монги
-    result_api_gmp = server_api_gmp.get_camunda_process_on_activity([ 'exportPayments'
+    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)          # Инициализация камунды ГМП
+    server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')     # Инициализация монги
+    result_api_gmp = server_api_gmp.get_camunda_process_on_activity(['exportPayments'
                                                                      # 'taskCheckPaymentStatus',
                                                                      # 'timerPaymentStatusRetry'
                                                                      ], return_type)

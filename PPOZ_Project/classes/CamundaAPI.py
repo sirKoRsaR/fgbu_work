@@ -6,15 +6,14 @@ import config
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-# Реконект при недоступности сервера (в том числе превышение лимита подключений) с задержкой в пол секунды
-session = requests.Session()
-retry = Retry(connect=10, backoff_factor=1)
-adapter = HTTPAdapter(max_retries=retry)
-session.mount('http://', adapter)
-session.mount('https://', adapter)
-
 
 class CamundaAPI:
+    # Реконект при недоступности сервера (в том числе превышение лимита подключений) с задержкой в пол секунды
+    session = requests.Session()
+    retry = Retry(connect=10, backoff_factor=1)
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
 
     def __init__(self, server_name):
         self.serverName = server_name
@@ -41,7 +40,7 @@ class CamundaAPI:
 
     def get_box_api(self, in_key):
         request_str = self.get_request_string('/process-instance?businessKey=' + in_key)
-        req_get_data = session.get(request_str)
+        req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
             exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
                                                   req_get_data.content.decode('utf-8')))
@@ -49,12 +48,17 @@ class CamundaAPI:
         return api_result
 
     def get_api_variable(self, in_json, in_variable):
+        """
+        :param in_json: json список процессов
+        :param in_variable: обычный список парамметров для получения
+        :return: в исходный json список добавляются json с данными параметрами
+        """
         if in_json is None or in_variable is None:
             return
         for i in in_json:
             for j in in_variable:
                 request_str = self.get_request_string('/process-instance/' + i['id'] + '/variables/' + j)
-                req_get_data = session.get(request_str)
+                req_get_data = self.session.get(request_str)
                 if req_get_data.status_code != 200:
                     pass
                     # exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
@@ -62,7 +66,6 @@ class CamundaAPI:
                 api_result = json.loads(req_get_data.content.decode('utf-8'))
                 i[j] = api_result
                 req_get_data.close()
-        # return api_result
 
     def get_camunda_process_on_activity(self, in_activity=None, return_type='count'):
         """
@@ -79,7 +82,7 @@ class CamundaAPI:
                   f'\tСчитываем коробку {in_activity[i]} ...')
             if return_type == 'json':
                 request_str = self.get_request_string('/process-instance?activityIdIn=' + in_activity[i])
-                req_get_data = session.get(request_str)
+                req_get_data = self.session.get(request_str)
                 if req_get_data.status_code != 200:
                     exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
                                                           req_get_data.content.decode('utf-8')))
@@ -91,7 +94,7 @@ class CamundaAPI:
                 req_get_data.close()
             elif return_type == 'count':
                 request_str = self.get_request_string('/process-instance/count?activityIdIn=' + in_activity[i])
-                req_get_data = session.get(request_str)
+                req_get_data = self.session.get(request_str)
                 if req_get_data.status_code != 200:
                     exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
                                                           req_get_data.content.decode('utf-8')))
@@ -104,8 +107,8 @@ class CamundaAPI:
 
     def get_cur_inst_time(self, iid):
         """
-        Функция принимает айди процесса и возращает время входа процеса в коробку. Результат возвращается если время входа
-        в коробку < текущего времени на указаное в переменной td.
+        Функция принимает айди процесса и возращает время входа процеса в коробку. Результат возвращается если время
+        входа в коробку < текущего времени на указаное в переменной td.
 
         :param iid: айди процесса
         :return: спсиок содержащий бизнес кей + время начала выполнения коробки
@@ -114,7 +117,7 @@ class CamundaAPI:
         ct = datetime.datetime.today()
         td = datetime.timedelta(hours=24)
         request_str = self.get_request_string('/history/process-instance/' + iid)
-        req_get_data = session.get(request_str)
+        req_get_data = self.session.get(request_str)
         ret = {}
         if req_get_data.status_code != 200:
             exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
@@ -131,4 +134,3 @@ class CamundaAPI:
                     req_get_data.close()
                 return ret
         req_get_data.close()  # Закрываем сессию
-        # http://ppoz-gmp-process-01.prod.egrn:9080/engine-rest/engine/default/process-instance?activityIds=taskCheckPaymentStatus
