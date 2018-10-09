@@ -2,11 +2,14 @@
   <dictionary name="EvstigneevKA">
     <words>
       <w>camunda</w>
+      <w>kuvd</w>
       <w>mongo</w>
       <w>ppoz</w>
       <w>quittances</w>
       <w>rrgmp</w>
       <w>rrpdb</w>
+      <w>spisok</w>
+      <w>systime</w>
     </words>
   </dictionary>
 </component>

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59645009-a9a6-40fd-a0a6-d8f6a6fbef94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PPOZ_Project/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PPOZ_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PPOZ_Project/classes/CamundaAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/classes/CamundaAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PPOZ_Project/classes/Logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/classes/Logging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PPOZ_Project/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PPOZ_Project/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/PPOZ_Project/start_process.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +14,7 @@
     <session id="-1770640807">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.6" value="1" />
@@ -131,7 +125,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="378" />
     <option name="width" value="1472" />
     <option name="height" value="1057" />
@@ -318,7 +312,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="378" y="0" width="1472" height="1057" extended-state="1" />
+    <frame x="378" y="0" width="1472" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13319387" />
@@ -326,7 +320,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.66387725" visible="true" weight="0.24918744" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66387725" weight="0.24918744" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

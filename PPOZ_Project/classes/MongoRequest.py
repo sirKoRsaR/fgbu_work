@@ -1,12 +1,12 @@
 import json
 import datetime
 import config
+import classes.LogForever as LogForever
 import classes.CamundaAPI as CamundaApi
 from pymongo import MongoClient
 
 
-
-class MongoRequest:
+class MongoRequest(object):
 
     def __init__(self, in_bd, in_collection, param_list=None):
         self.param_list = param_list
@@ -15,6 +15,8 @@ class MongoRequest:
         elif self.param_list['MongoDB_req'] == 1:
             self.get_gmp_freeze()
         self.collection = self.mongo_connection(in_bd, in_collection)
+        self.logger = LogForever.LogForever('MongoDB')
+        self.logger.put_msg(f'Server PPOZ MongoDB initialize', 'info')
 
 
     def mongo_req_starter(self):
