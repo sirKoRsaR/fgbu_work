@@ -16,7 +16,7 @@ class LogForever(object):
         log_writer.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s: %(message)s'))
         self.log_worker.addHandler(log_writer)
 
-    def put_msg(self, in_text, in_type='info'):
+    def put_msg(self, in_text, in_type='info') -> object:
         if in_type == 'info':
             self.log_worker.info(in_text)
         elif in_type == 'debug':

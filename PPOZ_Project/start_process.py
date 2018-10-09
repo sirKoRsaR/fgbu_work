@@ -22,6 +22,7 @@ if __name__ == '__main__':
 
     # server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)          # Инициализация камунды ГМП
     server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
+    server_api_shard06 = CamundaAPI.CamundaAPI(config.camunda_shard[6])
     # server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')     # Инициализация монги
 
     spisok_gmp_box = []
@@ -36,11 +37,15 @@ if __name__ == '__main__':
     for i in server_api_ppoz:
         result_api_shard = result_api_shard + [i.get_activity_process(spisok_shard_box, return_type, spisok_variable)]
 
+    # result_api_shard06 = server_api_shard06.get_activity_process(spisok_shard_box, 'json', spisok_variable)
+    # for ii in result_api_shard06:
+    #     for jj in result_api_shard06[ii]:
+    #         print(jj['id'], ii, jj['incident'])
+    #             # server_api_shard06.restart_box(ii, jj['id'])
 
-
-    # # Вывести список - шард - коробка - кол-во
-    # for nn in range(len(result_api_shard)):
-    #     print(config.shard_ppoz_name[nn], result_api_shard[nn])
+    # Вывести список - шард - коробка - кол-во
+    for nn in range(len(result_api_shard)):
+        print(config.shard_ppoz_name[nn], result_api_shard[nn])
 
     # result_api_gmp = server_api_gmp.get_activity_process(spisok_gmp_box, return_type, spisok_variable)
     # for ii in result_api_gmp:
