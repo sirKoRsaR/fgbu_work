@@ -46,8 +46,10 @@ class CamundaAPI(object):
         request_str = self.get_request_string('/process-instance?businessKey=' + in_key)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
-            exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
-                                                  req_get_data.content.decode('utf-8')))
+            self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                   req_get_data.status_code,
+                                                                   req_get_data.content.decode('utf-8')),
+                                'error')
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         return api_result
 
@@ -71,7 +73,9 @@ class CamundaAPI(object):
 
     def get_api_variable(self, in_json, in_variable):
         """
+
         Метод принимает json с данными и добавляет для каждой ветки данные по переменным
+
         :param in_json: json список процессов
         :param in_variable: обычный список парамметров для получения
         :return: в исходный json список добавляются json с данными параметрами
@@ -89,10 +93,9 @@ class CamundaAPI(object):
                         api_result = json.loads(req_get_data.content.decode('utf-8'))
                         i[j] = api_result
                     elif req_get_data.status_code != 200:
-                        self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
-                                                                               req_get_data.status_code,
-                                                                               req_get_data.content.decode('utf-8')),
-                                            'error')
+                        self.logger.put_msg('\tServer {} answer: {} {}'
+                                            .format(self.serverName, req_get_data.status_code,
+                                                    req_get_data.content.decode('utf-8')), 'error')
                     req_get_data.close()
                 elif j == 'incident':
                     request_str = self.get_request_string('/incident?processInstanceId=' + i['id'])
@@ -109,11 +112,13 @@ class CamundaAPI(object):
         self.logger.put_msg(f'\tFinish read Variables')
 
     def get_inst_on_activity(self, in_activity):
-        '''
+        """
+
         Функция получения json со всеми истансами по activityID (коробке)
+
         :param in_activity: имя коробки
         :return: json со всеми инстансами на коробке
-        '''
+        """
         request_str = self.get_request_string('/process-instance?activityIdIn=' + in_activity)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
@@ -126,11 +131,13 @@ class CamundaAPI(object):
         return api_result
 
     def get_count_on_activity(self, in_activity):
-        '''
+        """
+
         Функция получения json с кол-ом инстансов по activityID (коробке)
+
         :param in_activity: имя коробки
         :return: jsin с количеством инстансов на коробке
-        '''
+        """
         request_str = self.get_request_string('/process-instance/count?activityIdIn=' + in_activity)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
@@ -144,7 +151,9 @@ class CamundaAPI(object):
 
     def get_activity_process(self, in_activity=None, return_type='count', in_variables=None):
         """
+
         Функция возвращает json  с данными по коробкам
+
         :param in_variables:
         :param in_activity: список имен коробок
         :param return_type: count - счетчик; json - данные
@@ -174,7 +183,9 @@ class CamundaAPI(object):
 
     def get_incident_process(self, in_activity=None, return_type='count', in_variables=None):
         """
+
         Функция возвращает json  с данными с инцидентами (если коробка не задана, то возвращает все инцеденты)
+
         :param in_variables: не используется
         :param in_activity: список имен коробок, если пусто, то все инциденты
         :param return_type: count - счетчик; json - данные

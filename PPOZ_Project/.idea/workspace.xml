@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="">
+    <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="Default Changelist">
+      <change afterPath="$PROJECT_DIR$/classes/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Python_PsyCharm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Python_PsyCharm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CamundaTest/Unload_Gmp_Restart.py" beforeDir="false" afterPath="$PROJECT_DIR$/../CamundaTest/Unload_Gmp_Restart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PPOZ_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PPOZ_Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/CamundaAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/CamundaAPI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/ChatRoom.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/ChatRoom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/MongoRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/MongoRequest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/starter.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,128 +63,45 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-                <marker date="1539099982640" expanded="true" signature="69:1216" ph="..." />
-                <marker date="1539099982640" expanded="true" signature="769:775" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="174" column="28" selection-start-line="174" selection-start-column="8" selection-end-line="174" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#584#756#0" />
-                <element signature="e#184#205#0" />
-                <element signature="e#299#321#0" />
-                <element signature="e#323#597#0" />
-                <element signature="e#435#675#0" />
-                <element signature="e#720#1200#0" />
-                <element signature="e#1817#1913#1" />
-                <element signature="e#3082#3619#0" />
-                <element signature="e#2852#3235#1" />
-                <element signature="e#3921#4198#0" />
-                <element signature="e#4334#4981#0" />
-                <marker date="1539162414009" expanded="true" signature="818:851" ph="..." />
-                <marker date="1539162414009" expanded="false" signature="1085:1140" ph="..." />
-                <marker date="1539162414009" expanded="true" signature="2052:3075" ph="..." />
-                <marker date="1539162414009" expanded="true" signature="3751:5501" ph="..." />
-                <marker date="1539162414009" expanded="true" signature="6623:7276" ph="..." />
-                <marker date="1539162414009" expanded="true" signature="7365:7374" ph="..." />
-                <marker date="1539162414009" expanded="true" signature="7818:13805" ph="..." />
-                <marker date="1539162414009" expanded="false" signature="12274:12283" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-                <marker date="1539090365027" expanded="true" signature="247:248" ph="..." />
-                <marker date="1539090365027" expanded="true" signature="781:787" ph="..." />
-                <marker date="1539090365027" expanded="true" signature="1090:1140" ph="..." />
-                <marker date="1539090365027" expanded="true" signature="3000:3488" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="start_process.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="289">
+              <caret line="23" column="72" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <marker date="1538577990469" expanded="true" signature="615:868" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../EGRN_script/CHECK_ME/cfg_shard.py">
+      <file leaf-file-name="MongoRequest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../EGRN_script/CHECK_ME/shard_check_me.py">
+      <file leaf-file-name="CamundaAPI.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="340">
+              <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
               <folding>
-                <element signature="e#84#98#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -202,22 +131,22 @@
         <option value="$PROJECT_DIR$/config.cfg.ipynb" />
         <option value="$PROJECT_DIR$/config.cfg" />
         <option value="$PROJECT_DIR$/starter.ipynb" />
-        <option value="$PROJECT_DIR$/classes/ChatRoom.py" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/classes/Logging.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/classes/MongoRequest.py" />
         <option value="$PROJECT_DIR$/classes/LogForever.py" />
-        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
+        <option value="$PROJECT_DIR$/classes/ChatRoom.py" />
         <option value="$PROJECT_DIR$/start_process.py" />
+        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/classes/MongoRequest.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="266" />
-    <option name="y" value="1" />
-    <option name="width" value="1477" />
-    <option name="height" value="1055" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -264,8 +193,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -297,9 +226,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="Logging" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PPOZ_Project" />
@@ -318,9 +244,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="MongoRequest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PPOZ_Project" />
@@ -339,9 +262,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="start_process" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PPOZ_Project" />
@@ -360,9 +280,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PPOZ_Project" />
@@ -381,9 +298,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.CamundaAPI" />
@@ -473,27 +387,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="266" y="1" width="1477" height="1055" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25264645" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32899022" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.50035286" side_tool="true" weight="0.330076" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964714" weight="0.330076" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19125395" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" x="0" y="0" width="318" height="855" id="Documentation" side_tool="true" weight="0.3293201" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50035286" side_tool="true" weight="0.330076" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964714" visible="true" weight="0.33006537" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32899022" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" x="0" y="0" width="318" height="855" id="Documentation" order="3" side_tool="true" weight="0.3293201" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -505,6 +419,70 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add variables, inc, logging" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2822">
+          <caret line="174" column="28" selection-start-line="174" selection-start-column="8" selection-end-line="174" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.cfg">
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="ipnb-editor">
@@ -520,27 +498,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../EGRN_script/CHECK_ME/shard_check_me.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="20" />
-          <folding>
-            <element signature="e#84#98#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1538577990469" expanded="true" signature="615:868" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../EGRN_script/CHECK_ME/shard_check_me.py" />
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -548,88 +506,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/PROGS/Anaconda/Lib/logging/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="74" lean-forward="true" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../EGRN_script/CHECK_ME/cfg_shard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1539090365027" expanded="true" signature="247:248" ph="..." />
-            <marker date="1539090365027" expanded="true" signature="781:787" ph="..." />
-            <marker date="1539090365027" expanded="true" signature="1090:1140" ph="..." />
-            <marker date="1539090365027" expanded="true" signature="3000:3488" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/PROGS/Anaconda/Lib/logging/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../../EGRN_script/CHECK_ME/cfg_shard.py" />
     <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="223">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1539099982640" expanded="true" signature="69:1216" ph="..." />
-            <marker date="1539099982640" expanded="true" signature="769:775" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="174" column="28" selection-start-line="174" selection-start-column="8" selection-end-line="174" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#584#756#0" />
-            <element signature="e#184#205#0" />
-            <element signature="e#299#321#0" />
-            <element signature="e#323#597#0" />
-            <element signature="e#435#675#0" />
-            <element signature="e#720#1200#0" />
-            <element signature="e#1817#1913#1" />
-            <element signature="e#3082#3619#0" />
-            <element signature="e#2852#3235#1" />
-            <element signature="e#3921#4198#0" />
-            <element signature="e#4334#4981#0" />
-            <marker date="1539162414009" expanded="true" signature="818:851" ph="..." />
-            <marker date="1539162414009" expanded="false" signature="1085:1140" ph="..." />
-            <marker date="1539162414009" expanded="true" signature="2052:3075" ph="..." />
-            <marker date="1539162414009" expanded="true" signature="3751:5501" ph="..." />
-            <marker date="1539162414009" expanded="true" signature="6623:7276" ph="..." />
-            <marker date="1539162414009" expanded="true" signature="7365:7374" ph="..." />
-            <marker date="1539162414009" expanded="true" signature="7818:13805" ph="..." />
-            <marker date="1539162414009" expanded="false" signature="12274:12283" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/start_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="289">
+          <caret line="23" column="72" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
           <folding>
-            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>

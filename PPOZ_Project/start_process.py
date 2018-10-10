@@ -1,4 +1,4 @@
-import classes.ChatRoom as chat_room
+import classes.ChatRoom as ChatRoom
 import config
 import classes.MongoRequest as MongoRequest
 import classes.CamundaAPI as CamundaAPI
@@ -7,10 +7,11 @@ import classes.LogForever as LogForever
 
 param_list = {'MongoDB_req': ''}
 
+
 if __name__ == '__main__':
     args = sys.argv
     logger = LogForever.LogForever('project')
-    chat_room.get_initial_param(param_list)
+    ChatRoom.get_initial_param(param_list)
     # if param_list['MongoDB_req'] == 'test':
     #     server_api_ppoz = [CamundaAPI.CamundaAPI(config.camunda_shard[i]) for i in range(len(config.shard_ppoz_num))]
     #     server_api_ppoz.api_req_starter()
@@ -19,10 +20,10 @@ if __name__ == '__main__':
     #     request_in_mongodb.mongo_req_starter()
     # chat_room.get_final()
 
-    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)          # Инициализация камунды ГМП
+    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)  # Инициализация камунды ГМП
     server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
     server_api_shard06 = CamundaAPI.CamundaAPI(config.camunda_shard[6])
-    # server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')     # Инициализация монги
+    # server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest') # Инициализация монги
 
     spisok_gmp_box = []
     spisok_shard_box = ['notificationSettingsTask',
@@ -31,7 +32,7 @@ if __name__ == '__main__':
                         'infoMessage']
     return_type = 'count'
     spisok_variable = ['incident']
-    result_api_shard=[]
+    result_api_shard = []
 
     # for i in server_api_ppoz:
     #     result_api_shard = result_api_shard + [i.get_activity_process(spisok_shard_box, return_type, spisok_variable)]
@@ -41,11 +42,13 @@ if __name__ == '__main__':
     for nn in gmp_inc:
         print(nn)
 
-    # result_api_shard06 = server_api_shard06.get_activity_process(spisok_shard_box, 'json', spisok_variable)
-    # for ii in result_api_shard06:
-    #     for jj in result_api_shard06[ii]:
-    #         print(jj['id'], ii, jj['incident'])
-    #             # server_api_shard06.restart_box(ii, jj['id'])
+    # todo вынести в конфиг
+    # if same_debub:
+    #     result_api_shard06 = server_api_shard06.get_activity_process(spisok_shard_box, 'json', spisok_variable)
+    #     for ii in result_api_shard06:
+    #         for jj in result_api_shard06[ii]:
+    #             print(jj['id'], ii, jj['incident'])
+    #                 # server_api_shard06.restart_box(ii, jj['id'])
 
     # Вывести список - шард - коробка - кол-во
     # for nn in range(len(result_api_shard)):
@@ -58,7 +61,6 @@ if __name__ == '__main__':
     #         if jj['id'] == 'ef991b59-c22f-11e8-8cb0-fa163eb984f4' and not jj['incident']:
     #             print(jj['id'], jj['incident'], ii)
     #             server_api_gmp.restart_box(ii, jj['id'])
-
 
     # count2 = 0
     # count = 0
