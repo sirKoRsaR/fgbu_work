@@ -4,7 +4,6 @@ import classes.MongoRequest as MongoRequest
 import classes.CamundaAPI as CamundaAPI
 import sys
 import classes.LogForever as LogForever
-# import datetime
 
 param_list = {'MongoDB_req': ''}
 
@@ -20,7 +19,7 @@ if __name__ == '__main__':
     #     request_in_mongodb.mongo_req_starter()
     # chat_room.get_final()
 
-    # server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)          # Инициализация камунды ГМП
+    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)          # Инициализация камунды ГМП
     server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
     server_api_shard06 = CamundaAPI.CamundaAPI(config.camunda_shard[6])
     # server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')     # Инициализация монги
@@ -34,8 +33,13 @@ if __name__ == '__main__':
     spisok_variable = ['incident']
     result_api_shard=[]
 
-    for i in server_api_ppoz:
-        result_api_shard = result_api_shard + [i.get_activity_process(spisok_shard_box, return_type, spisok_variable)]
+    # for i in server_api_ppoz:
+    #     result_api_shard = result_api_shard + [i.get_activity_process(spisok_shard_box, return_type, spisok_variable)]
+
+    # выод списка инцидентов по камунде гмп
+    gmp_inc = server_api_gmp.get_incident_process(return_type='json')
+    for nn in gmp_inc:
+        print(nn)
 
     # result_api_shard06 = server_api_shard06.get_activity_process(spisok_shard_box, 'json', spisok_variable)
     # for ii in result_api_shard06:
@@ -44,8 +48,8 @@ if __name__ == '__main__':
     #             # server_api_shard06.restart_box(ii, jj['id'])
 
     # Вывести список - шард - коробка - кол-во
-    for nn in range(len(result_api_shard)):
-        print(config.shard_ppoz_name[nn], result_api_shard[nn])
+    # for nn in range(len(result_api_shard)):
+    #     print(config.shard_ppoz_name[nn], result_api_shard[nn])
 
     # result_api_gmp = server_api_gmp.get_activity_process(spisok_gmp_box, return_type, spisok_variable)
     # for ii in result_api_gmp:

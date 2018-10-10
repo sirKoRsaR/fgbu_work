@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import requests
 import json
 import datetime
@@ -115,8 +117,10 @@ class CamundaAPI(object):
         request_str = self.get_request_string('/process-instance?activityIdIn=' + in_activity)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
-            exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
-                                                  req_get_data.content.decode('utf-8')))
+            self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                   req_get_data.status_code,
+                                                                   req_get_data.content.decode('utf-8')),
+                                'error')
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         req_get_data.close()
         return api_result
@@ -130,8 +134,10 @@ class CamundaAPI(object):
         request_str = self.get_request_string('/process-instance/count?activityIdIn=' + in_activity)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
-            exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
-                                                  req_get_data.content.decode('utf-8')))
+            self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                   req_get_data.status_code,
+                                                                   req_get_data.content.decode('utf-8')),
+                                'error')
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         req_get_data.close()
         return api_result
@@ -166,14 +172,59 @@ class CamundaAPI(object):
             self.logger.put_msg(f'Read box {in_activity[i]} finish', 'info')
         return api_result_array
 
-
-
-
-
-
-
-
-
+    def get_incident_process(self, in_activity=None, return_type='count', in_variables=None):
+        """
+        Функция возвращает json  с данными с инцидентами (если коробка не задана, то возвращает все инцеденты)
+        :param in_variables: не используется
+        :param in_activity: список имен коробок, если пусто, то все инциденты
+        :param return_type: count - счетчик; json - данные
+        :return: json Список Коробка:инциденты (счетчик)
+        """
+        self.logger.put_msg(f'Class: {__name__}', 'info')
+        print(f'{Fore.LIGHTBLUE_EX}{Style.NORMAL}'f'Начали получать сведения из {self.serverName}: ')
+        api_result_array = {}
+        if in_activity is None:
+            if return_type == 'json':
+                request_str = self.get_request_string('/incident')
+            elif return_type == 'count':
+                request_str = self.get_request_string('/incident/count')
+            req_get_data = self.session.get(request_str)
+            if req_get_data.status_code != 200:
+                self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                       req_get_data.status_code,
+                                                                       req_get_data.content.decode('utf-8')),
+                                    'error')
+            api_result = json.loads(req_get_data.content.decode('utf-8'))
+            req_get_data.close()
+            api_result_array = api_result
+            if return_type == 'json':
+                self.logger.put_msg(f'\tCount incident (all): {len(api_result)}', 'info')
+            elif return_type == 'count':
+                self.logger.put_msg(f'\tCount incident (all): {api_result["count"]}', 'info')
+        else:
+            for i in range(len(in_activity)):
+                self.logger.put_msg(f'Read box {in_activity[i]} start', 'info')
+                print(f'{Fore.LIGHTBLUE_EX}{Style.DIM}'
+                      f'\tСчитываем коробку {in_activity[i]} ...')
+                if return_type == 'json':
+                    request_str = self.get_request_string('/incident?activityId=' + in_activity)
+                elif return_type == 'count':
+                    request_str = self.get_request_string('/incident/count?activityId=' + in_activity)
+                req_get_data = self.session.get(request_str)
+                if req_get_data.status_code != 200:
+                    self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                           req_get_data.status_code,
+                                                                           req_get_data.content.decode('utf-8')),
+                                        'error')
+                api_result = json.loads(req_get_data.content.decode('utf-8'))
+                req_get_data.close()
+                api_result_array[in_activity[i]] = api_result
+                if return_type == 'json':
+                    self.logger.put_msg(f'\tCount incident on box: {len(api_result)}', 'info')
+                elif return_type == 'count':
+                    self.logger.put_msg(f'\tCount incident on box: {api_result["count"]}', 'info')
+                self.logger.put_msg(f'Read box {in_activity[i]} finish', 'info')
+        return api_result_array
 
     def get_cur_inst_time(self, iid):
         """
