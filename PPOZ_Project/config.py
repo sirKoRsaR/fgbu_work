@@ -19,6 +19,8 @@ camunda_shard = ['http://ppoz-process-core-' + i + '.prod.egrn:9084' for i in sh
 camunda_gmp = 'http://ppoz-gmp-process-01.prod.egrn:9080'
 mongodb_conn = ['mongodb://support:support@ppoz-mongos-request-07.prod.egrn:27017']
 
+
+
 timedelta_days = 2
 unload_in_files = 'no'
 debug_start = 'no'
