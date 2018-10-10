@@ -1,5 +1,6 @@
 import json
 import datetime
+from bson import json_util
 import config
 import classes.LogForever as LogForever
 import classes.CamundaAPI as CamundaApi
@@ -17,7 +18,6 @@ class MongoRequest(object):
         self.collection = self.mongo_connection(in_bd, in_collection)
         self.logger = LogForever.LogForever('MongoDB')
         self.logger.put_msg(f'Server PPOZ MongoDB initialize', 'info')
-
 
     def mongo_req_starter(self):
         if self.param_list['MongoDB_req'] == '1':

@@ -21,6 +21,7 @@ def input_command():
     print(f'{Fore.RESET}{Style.NORMAL}')
     return ans_req
 
+
 def get_list_mongo_req():
     # TODO сделать автоматическое пополнение из классов
     print('\n')
@@ -94,6 +95,7 @@ def get_param_from_config():
               f'\tРежим разработчика: \t\t\t\t'
               f'{Fore.LIGHTGREEN_EX}{Style.NORMAL}'
               f'!!! Нет параметра')
+
 
 def get_final():
     print(f'{Fore.BLUE}{Style.NORMAL}'

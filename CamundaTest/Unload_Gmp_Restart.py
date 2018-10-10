@@ -22,20 +22,20 @@ box = 'taskCheckChargeCreationStatus'
 restartBody ={"unfinished":True,"activityId":box,"startedAfter":"2018-09-05T00:00:00","startedBefore":"2018-09-09T11:00:00"}
 
 restartBody_ = {
-                 "skipCustomListeners": False,
-                 "skipIoMappings": True,
-                 "instructions": [
-                 {
-                    "type": "cancel",
-                    "activityId": box
-                 },
-                 {
-                    "type":"startBeforeActivity",
+                "skipCustomListeners": False,
+                "skipIoMappings": True,
+                "instructions": [
+                {
+                "type": "cancel",
+                "activityId": box
+                },
+                {
+                    "type": "startBeforeActivity",
                     "activityId": box,
                     "variables":    {
-                                     "rep":{"value":"retry"}
+                                     "rep": {"value": "retry"}
                                     }
-                }]
+                    }]
                 }
 
 def get_activity(uri, id, activityName=False, activityType=False, processIId=False, Id=False):
@@ -90,7 +90,7 @@ def load_id_from_file():
         file_name = 'log_gmp_' + 'bpm' + '.log'
         f = open(file_name, 'r')
         f_all = f.readlines()
-        for j in f_all:
+        # for j in f_all:
             # print(j)
 
         f.close()
