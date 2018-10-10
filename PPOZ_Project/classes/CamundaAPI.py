@@ -54,6 +54,14 @@ class CamundaAPI(object):
         return api_result
 
     def restart_box(self, in_activity=None, in_instance=None):
+        """
+
+        Метод рестарта инстансов
+
+        :param in_activity: имя коробки
+        :param in_instance: id инстанса для рестарта
+        :return:
+        """
         if in_activity is None or in_instance is None:
             self.logger.put_msg(f'NOT RESTART BOX: activity (box) or instance (key) is empty', 'info')
             return
@@ -218,9 +226,9 @@ class CamundaAPI(object):
                 print(f'{Fore.LIGHTBLUE_EX}{Style.DIM}'
                       f'\tСчитываем коробку {in_activity[i]} ...')
                 if return_type == 'json':
-                    request_str = self.get_request_string('/incident?activityId=' + in_activity)
+                    request_str = self.get_request_string('/incident?activityId=' + in_activity[i])
                 elif return_type == 'count':
-                    request_str = self.get_request_string('/incident/count?activityId=' + in_activity)
+                    request_str = self.get_request_string('/incident/count?activityId=' + in_activity[i])
                 req_get_data = self.session.get(request_str)
                 if req_get_data.status_code != 200:
                     self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
