@@ -157,11 +157,35 @@ class CamundaAPI(object):
         req_get_data.close()
         return api_result
 
+    def get_dict_from_json_list(self, in_list, in_box_name=None):
+        """
+        Функция принимает список с json, а отдает словарь с именами коробок и списками json
+        :param in_list: список json
+        :param in_box_name: тэг коробки в конкретном списке, если None. то в псевдокоробка 'ALL_BOX'
+        :return: словарь keys: box, values:[json's] со списками json
+        """
+        api_result_array = {}
+        temp_list = []
+        if in_box_name is None:
+            for i in in_list:
+                temp_list.append(i)
+            api_result_array['ALL_BOX'] = temp_list
+            return api_result_array
+        for i in in_list:
+            temp2_list = []
+            if i[in_box_name] in temp_list:
+                temp2_list = api_result_array[i[in_box_name]]
+                temp2_list.append(i)
+                api_result_array[i[in_box_name]] = temp2_list
+            else:
+                temp_list.append(i[in_box_name])
+                temp2_list.append(i)
+                api_result_array[i[in_box_name]] = temp2_list
+        return api_result_array
+
     def get_activity_process(self, in_activity=None, return_type='count', in_variables=None):
         """
-
         Функция возвращает json  с данными по коробкам
-
         :param in_variables:
         :param in_activity: список имен коробок
         :param return_type: count - счетчик; json - данные
@@ -170,23 +194,27 @@ class CamundaAPI(object):
         self.logger.put_msg(f'Class: {__name__}', 'info')
         print(f'{Fore.LIGHTBLUE_EX}{Style.NORMAL}'f'Начали получать сведения из {self.serverName}: ')
         api_result_array = {}
-        for i in range(len(in_activity)):
-            self.logger.put_msg(f'Read box {in_activity[i]} start', 'info')
-            print(f'{Fore.LIGHTBLUE_EX}{Style.DIM}'
-                  f'\tСчитываем коробку {in_activity[i]} ...')
-            if return_type == 'json':
-                api_result = self.get_inst_on_activity(in_activity[i])
-                self.logger.put_msg(f'\tCount activity on box: {len(api_result)}', 'info')
-                if in_variables:  # добавляем значения по переменным
-                    self.get_api_variable(api_result, in_variables)
-                api_result_array[in_activity[i]] = api_result
-            elif return_type == 'count':
-                api_result = self.get_count_on_activity(in_activity[i])
-                api_result_array[in_activity[i]] = api_result
-                self.logger.put_msg(f'\tCount activity on box: {api_result["count"]}', 'info')
-            else:
-                api_result_array = None
-            self.logger.put_msg(f'Read box {in_activity[i]} finish', 'info')
+        if in_activity is None:
+            pass
+        # TODO  Если списка коробок нет до получать по ВСЕМ коробкам
+        else:
+            for i in range(len(in_activity)):
+                self.logger.put_msg(f'Read box {in_activity[i]} start', 'info')
+                print(f'{Fore.LIGHTBLUE_EX}{Style.DIM}'
+                      f'\tСчитываем коробку {in_activity[i]} ...')
+                if return_type == 'json':
+                    api_result = self.get_inst_on_activity(in_activity[i])
+                    self.logger.put_msg(f'\tCount activity on box: {len(api_result)}', 'info')
+                    if in_variables:  # добавляем значения по переменным
+                        self.get_api_variable(api_result, in_variables)
+                    api_result_array[in_activity[i]] = api_result
+                elif return_type == 'count':
+                    api_result = self.get_count_on_activity(in_activity[i])
+                    api_result_array[in_activity[i]] = api_result
+                    self.logger.put_msg(f'\tCount activity on box: {api_result["count"]}', 'info')
+                else:
+                    api_result_array = None
+                self.logger.put_msg(f'Read box {in_activity[i]} finish', 'info')
         return api_result_array
 
     def get_incident_process(self, in_activity=None, return_type='count', in_variables=None):
@@ -215,22 +243,12 @@ class CamundaAPI(object):
                                     'error')
             api_result = json.loads(req_get_data.content.decode('utf-8'))
             req_get_data.close()
-            # for i in api_result:
-            #     # print(api_result_array[i['activityId']])
-            #     api_result_array[i['activityId']] = api_result_array[i['activityId']] + i
-            #     # print(api_result)
-            #     # if api_result_array.index(i['activityId'], 'true') == true:
-            #     #     api_result_array[i['activityId']] = api_result_array[i['activityId']] + [i]
-            #     # else:
-            #     #     print(i['activityId'])
-            #     #     api_result_array.extend(i['activityId'])
-            #     #     api_result_array[i['activityId']] = api_result_array[i['activityId']] + [i]
-            # # api_result_array = api_result
-            print(api_result_array)
             if return_type == 'json':
                 self.logger.put_msg(f'\tCount incident (all): {len(api_result)}', 'info')
+                api_result_array = self.get_dict_from_json_list(api_result, 'activityId')
             elif return_type == 'count':
                 self.logger.put_msg(f'\tCount incident (all): {api_result["count"]}', 'info')
+                api_result_array = api_result
         else:
             for i in range(len(in_activity)):
                 self.logger.put_msg(f'Read box {in_activity[i]} start', 'info')

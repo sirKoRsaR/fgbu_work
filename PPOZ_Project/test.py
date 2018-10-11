@@ -2,6 +2,7 @@ import json
 
 my_dict = {'box0': '{dfgdfv}'}
 array_temp = []
+array_temp2 = [array_temp]
 
 my_array1 = [
                 {'instance': 'instance0', 'box': 'box0', 'id': 'id0'},
@@ -10,30 +11,20 @@ my_array1 = [
                 {'instance': 'instance3', 'box': 'box1', 'id': 'id3'}
              ]
 
-if 'box0' in my_dict:
-    #print('yes')
-    #print(my_dict['box0'])
-    #array_temp = my_dict['box0']
-    array_temp = ['dfdf']
-    array_temp = array_temp + ['sdfsdfdsffdgfh']
-    my_dict['box0'] = array_temp
-    print(array_temp)
-    #my_dict.update({'box0': {my_dict['box0'] {dfdf}'})
-else:
-    #print('No')
-    my_dict['box0'] = my_array1[1]
-    #print(my_array)
-
-
-# for i in my_array1:
-#     if i['box'] in my_dict:
-#         pass
-#     else:
-#         my_dict[i['box']] = i
-
-    # print(i['box'])
-
-    #my_array[i['box']] = my_array[i['box']].update(i)
-
+ii = []
+my_dict = {}
+for i in my_array1:
+    ii3 = []
+    if i['box'] in ii:
+        print(str(i['box']) + ' in ii')
+        ii3 = my_dict[i['box']]
+        ii3.append(i)
+        my_dict[i['box']] = ii3
+    else:
+        ii.append(i['box'])
+        ii3.append(i)
+        my_dict[i['box']] = ii3
 print(my_dict)
-#print (array_temp)
+for tt, rr in my_dict.items():
+    print(tt + '\t' + str(rr))
+

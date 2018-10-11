@@ -26,9 +26,9 @@ if __name__ == '__main__':
     # server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest') # Инициализация монги
 
     spisok_gmp_box = ['taskCheckPaymentStatus']
-    spisok_shard_box = ['notificationSettingsTask',
-                        'kuvdFixation',
-                        'senderSystem',
+    spisok_shard_box = [#'notificationSettingsTask',
+                        #'kuvdFixation',
+                        #'senderSystem',
                         'infoMessage']
     return_type = 'count'
     spisok_variable = ['incident']
@@ -37,17 +37,22 @@ if __name__ == '__main__':
     # for i in server_api_ppoz:
     #     result_api_shard = result_api_shard + [i.get_activity_process(spisok_shard_box, return_type, spisok_variable)]
 
+    # mm = server_api_shard06.get_activity_process(spisok_shard_box, return_type='json', in_variables=None)
+    # print(mm)
+
     # выод списка инцидентов по камунде гмп
-    gmp_inc = server_api_gmp.get_incident_process(in_activity=spisok_gmp_box, return_type='json')
-    print(gmp_inc)
-    # for nn in gmp_inc:
-    #     for mm in gmp_inc[nn]:
-    #         # if mm['incidentMessage'] == 'Ошибка СМЭВ: SMEV-1: Внутренняя ошибка сервиса':
-    #         #     server_api_gmp.restart_box(mm['activityId'], mm['processInstanceId'])
-    #         #     print(mm['activityId'], mm['processInstanceId'])
-    #         print(mm)
-    #         pass
-    #     print(len(gmp_inc[nn]))
+    gmp_inc = server_api_gmp.get_incident_process(return_type='json')
+    #print(gmp_inc)
+
+    for nn in gmp_inc:
+        print(nn)
+        for mm in gmp_inc[nn]:
+            # if mm['incidentMessage'] == 'Ошибка СМЭВ: SMEV-1: Внутренняя ошибка сервиса':
+            #     server_api_gmp.restart_box(mm['activityId'], mm['processInstanceId'])
+            #     print(mm['activityId'], mm['processInstanceId'])
+            #print(mm)
+            pass
+        print(len(gmp_inc[nn]))
 
     # todo вынести в конфиг
     # Лечение по коробкам
