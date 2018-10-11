@@ -215,7 +215,18 @@ class CamundaAPI(object):
                                     'error')
             api_result = json.loads(req_get_data.content.decode('utf-8'))
             req_get_data.close()
-            api_result_array = api_result
+            # for i in api_result:
+            #     # print(api_result_array[i['activityId']])
+            #     api_result_array[i['activityId']] = api_result_array[i['activityId']] + i
+            #     # print(api_result)
+            #     # if api_result_array.index(i['activityId'], 'true') == true:
+            #     #     api_result_array[i['activityId']] = api_result_array[i['activityId']] + [i]
+            #     # else:
+            #     #     print(i['activityId'])
+            #     #     api_result_array.extend(i['activityId'])
+            #     #     api_result_array[i['activityId']] = api_result_array[i['activityId']] + [i]
+            # # api_result_array = api_result
+            print(api_result_array)
             if return_type == 'json':
                 self.logger.put_msg(f'\tCount incident (all): {len(api_result)}', 'info')
             elif return_type == 'count':

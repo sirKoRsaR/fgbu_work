@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # chat_room.get_final()
 
     server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)  # Инициализация камунды ГМП
-    server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
+    # server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
     server_api_shard06 = CamundaAPI.CamundaAPI(config.camunda_shard[6])
     # server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest') # Инициализация монги
 
@@ -38,25 +38,26 @@ if __name__ == '__main__':
     #     result_api_shard = result_api_shard + [i.get_activity_process(spisok_shard_box, return_type, spisok_variable)]
 
     # выод списка инцидентов по камунде гмп
-    gmp_inc = server_api_gmp.get_incident_process(spisok_gmp_box, return_type='json')
-    # print(gmp_inc)
-    for nn in gmp_inc:
-        for mm in gmp_inc[nn]:
-            # if mm['incidentMessage'] == 'Ошибка СМЭВ: SMEV-1: Внутренняя ошибка сервиса':
-            #     server_api_gmp.restart_box(mm['activityId'], mm['processInstanceId'])
-            #     print(mm['activityId'], mm['processInstanceId'])
-            print(mm)
-            pass
-        print(len(gmp_inc[nn]))
+    gmp_inc = server_api_gmp.get_incident_process(in_activity=spisok_gmp_box, return_type='json')
+    print(gmp_inc)
+    # for nn in gmp_inc:
+    #     for mm in gmp_inc[nn]:
+    #         # if mm['incidentMessage'] == 'Ошибка СМЭВ: SMEV-1: Внутренняя ошибка сервиса':
+    #         #     server_api_gmp.restart_box(mm['activityId'], mm['processInstanceId'])
+    #         #     print(mm['activityId'], mm['processInstanceId'])
+    #         print(mm)
+    #         pass
+    #     print(len(gmp_inc[nn]))
 
     # todo вынести в конфиг
     # Лечение по коробкам
-    # if same_debub:
-    #     result_api_shard06 = server_api_shard06.get_activity_process(spisok_shard_box, 'json', spisok_variable)
-    #     for ii in result_api_shard06:
-    #         for jj in result_api_shard06[ii]:
-    #             print(jj['id'], ii, jj['incident'])
-    #                 # server_api_shard06.restart_box(ii, jj['id'])
+    # if same_debug:
+    # result_api_shard06 = server_api_shard06.get_activity_process(in_activity=None,  return_type='json',
+    #                                                              in_variables=None)
+    # for ii in result_api_shard06:
+    #     for jj in result_api_shard06[ii]:
+    #         print(jj['id'], ii, jj['incident'])
+    #             # server_api_shard06.restart_box(ii, jj['id'])
 
     # Вывести список - шард - коробка - кол-во
     # for nn in range(len(result_api_shard)):
