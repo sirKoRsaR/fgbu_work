@@ -166,6 +166,11 @@ class CamundaAPI(object):
         """
         api_result_array = {}
         temp_list = []
+        try:
+            in_list[0][in_box_name]
+        except KeyError:
+            self.logger.put_msg(f'Method: {__name__}.{self.get_dict_from_json_list.__name__}, no input box_name {in_box_name} in json list', 'info')
+            return api_result_array
         if in_box_name is None:
             for i in in_list:
                 temp_list.append(i)
@@ -245,7 +250,7 @@ class CamundaAPI(object):
             req_get_data.close()
             if return_type == 'json':
                 self.logger.put_msg(f'\tCount incident (all): {len(api_result)}', 'info')
-                api_result_array = self.get_dict_from_json_list(api_result, 'activityId')
+                api_result_array = self.get_dict_from_json_list(api_result, 'activityIdpppp')
             elif return_type == 'count':
                 self.logger.put_msg(f'\tCount incident (all): {api_result["count"]}', 'info')
                 api_result_array = api_result
