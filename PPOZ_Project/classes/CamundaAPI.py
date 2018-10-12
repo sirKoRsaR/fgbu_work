@@ -43,6 +43,11 @@ class CamundaAPI(object):
                 return json.loads('{ "id": "' + entry['id'] + '", "definitionId": "' + entry['definitionId'] + '"}')
 
     def get_box_api(self, in_key):
+        """
+
+        :param in_key:
+        :return:
+        """
         request_str = self.get_request_string('/process-instance?businessKey=' + in_key)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
@@ -53,7 +58,8 @@ class CamundaAPI(object):
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         return api_result
 
-    # def get_instanse_by_bk(self, in_bk):
+    # def get_instance_ppoz_bk(self, in_bk=None):
+
 
 
     def restart_box(self, in_activity=None, in_instance=None):

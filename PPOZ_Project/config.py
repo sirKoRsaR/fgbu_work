@@ -27,3 +27,5 @@ get_from_ppoz = 'no'
 get_from_gmp = 'no'
 get_from_mongo = 'yes'
 
+terminal_status = ['processed', 'rejected', 'obstacles_not_removed', 'returned', 'interrupted', 'validationError',
+                   'validationError_EGRN', 'noInformation', 'validationError_SID']

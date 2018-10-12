@@ -15,7 +15,8 @@ class MongoRequest(object):
             pass
         elif self.param_list['MongoDB_req'] == 1:
             self.get_gmp_freeze()
-        self.collection = self.mongo_connection(in_bd, in_collection)
+        self.client = MongoClient(config.mongodb_conn)
+        self.collection = self.mongo_connection(self.client, in_bd, in_collection)
         self.logger = LogForever.LogForever('MongoDB')
         self.logger.put_msg(f'Server PPOZ MongoDB {in_bd}.{in_collection} initialize', 'info')
 
@@ -25,11 +26,14 @@ class MongoRequest(object):
             self.get_gmp_freeze()
 
     @staticmethod
-    def mongo_connection(in_bd, in_collection):
-        collection = MongoClient(config.mongodb_conn)[in_bd][in_collection]
-        # mongo_db = client_mongo[in_bd][in_collection]
+    def mongo_connection(in_client, in_bd, in_collection):
+        collection = in_client[in_bd][in_collection]
         # collection = mongo_db[in_collection]
         return collection
+
+    def client_close(self):
+        self.client.close()
+        self.logger.put_msg(f'Server PPOZ MongoDB close', 'info')
 
     # def mongo_request_list(self):
     # TODO Сделать автоматический сбор запросов
@@ -83,11 +87,10 @@ class MongoRequest(object):
         :param in_gmp:
         :return:
         """
-        # collection = self.mongo_connection('rrgmp', 'gmpRequest')
         item_result = self.collection.find_one(
             {
-                # 'gmpServiceRequestNumber': in_gmp
                 '_id': in_gmp
+
             },
             {
                 '_id': 1,
@@ -104,7 +107,6 @@ class MongoRequest(object):
                 'billingInfo.extRequestIds': 1,
                 'subscriptions': 1
             })
-        # print(in_gmp + ' отработан')
         return item_result
 
     def get_request(self, in_bk):
@@ -122,6 +124,7 @@ class MongoRequest(object):
                 'region': 1,
                 'processInstanceId': 1,
                 'status': 1,
+                'state': 1,
                 'statusHistory': 1,
                 'statements.billingInfo': 1,
                 'statements.actionCode': 1,
@@ -134,15 +137,26 @@ class MongoRequest(object):
             })
         return item_result
 
-        # def open_files(self, in_file_name_type):
-        #     obj_open_files = []
-        #     for j in shard_ppoz:
-        #         file_open = 'log_' + in_file_name_type + '_' + j + '.log'
-        #         obj_open_files[j] = open(file_open, 'w')
-        #     return obj_open_files
-        #
-        # def close_files(self, in_file_name_type, in_obj_open_files):
-        #     for j in shard_ppoz:
-        #         # file_open = 'log_' + in_file_name_type + '_' + j + '.log'
-        #         # print(file_open)
-        #         in_obj_open_files.close()
+    def get_gmp_error(self):
+        item_result = self.collection.find(
+            {
+                'status': 'error',
+                'lastUpdated': {'$gt': (datetime.datetime.now() - datetime.timedelta(days=120))},
+                'billingInfo.errorMessage.error': {"$regex": u"^Не удалось импортировать начисление в ГИС ГМП, "
+                                                             u"возникла ошибка, описание: -1"}
+            },
+            {
+                '_id': 1,
+                'lastUpdated': 1,
+                'billingInfo.extRequestIds': 1,
+                'billingInfo.errorMessage.error': 1
+            }
+        )
+        return item_result
+
+    # def get_request_univers(self,
+    #                         in_query_param={'_id': '34/15380/2018-3193', 'requestType': 'egron'}):
+    #     query = in_query_param
+    #     projection = {}
+
+
