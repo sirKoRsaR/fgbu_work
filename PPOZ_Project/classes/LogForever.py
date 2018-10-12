@@ -5,7 +5,7 @@ import os
 
 class LogForever(object):
 
-    def __init__(self, in_log_type):
+    def __init__(self, in_log_type, in_format=None):
         self.log_name = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '_' + in_log_type
         # logging.basicConfig(level=logging.INFO,
         #                     format=logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s'))
@@ -13,7 +13,11 @@ class LogForever(object):
         self.log_worker.setLevel(level=logging.INFO)
         log_writer = logging.FileHandler(os.path.join(os.getcwd(), 'Logs/' + self.log_name + '.log'), 'a')
         log_writer.setLevel(logging.DEBUG)
-        log_writer.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s: %(message)s'))
+        if in_format is None:
+            log_writer.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s: %(message)s'))
+        else:
+            #TODO добавить разные варианты обработки событий
+            pass
         self.log_worker.addHandler(log_writer)
 
     def put_msg(self, in_text, in_type='info') -> object:

@@ -53,6 +53,9 @@ class CamundaAPI(object):
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         return api_result
 
+    # def get_instanse_by_bk(self, in_bk):
+
+
     def restart_box(self, in_activity=None, in_instance=None):
         """
 
@@ -169,7 +172,8 @@ class CamundaAPI(object):
         try:
             in_list[0][in_box_name]
         except KeyError:
-            self.logger.put_msg(f'Method: {__name__}.{self.get_dict_from_json_list.__name__}, no input box_name {in_box_name} in json list', 'info')
+            self.logger.put_msg(f'Method: {__name__}.{self.get_dict_from_json_list.__name__}, no input box_'
+                                f'name {in_box_name} in json list', 'info')
             return api_result_array
         if in_box_name is None:
             for i in in_list:
@@ -250,7 +254,7 @@ class CamundaAPI(object):
             req_get_data.close()
             if return_type == 'json':
                 self.logger.put_msg(f'\tCount incident (all): {len(api_result)}', 'info')
-                api_result_array = self.get_dict_from_json_list(api_result, 'activityIdpppp')
+                api_result_array = self.get_dict_from_json_list(api_result, 'activityId')
             elif return_type == 'count':
                 self.logger.put_msg(f'\tCount incident (all): {api_result["count"]}', 'info')
                 api_result_array = api_result

@@ -17,7 +17,7 @@ class MongoRequest(object):
             self.get_gmp_freeze()
         self.collection = self.mongo_connection(in_bd, in_collection)
         self.logger = LogForever.LogForever('MongoDB')
-        self.logger.put_msg(f'Server PPOZ MongoDB initialize', 'info')
+        self.logger.put_msg(f'Server PPOZ MongoDB {in_bd}.{in_collection} initialize', 'info')
 
     def mongo_req_starter(self):
         if self.param_list['MongoDB_req'] == '1':
@@ -39,7 +39,6 @@ class MongoRequest(object):
         out_files_open = [open(i, 'a') for i in out_files]
         json.dump(in_data, out_files_open[in_num_of_shard], default=json_util.default)
         out_files_open[in_num_of_shard].write('\n')
-
         for j in range(len(out_files_open)):
             out_files_open[j].close()
 
@@ -78,7 +77,12 @@ class MongoRequest(object):
             # print(item_result)
         print('Всего найдено ' + str(count_req) + ' обращений(я)')
 
-    def get_info_mongo_gmp(self, in_gmp):
+    def get_gmp_request(self, in_gmp):
+        """
+
+        :param in_gmp:
+        :return:
+        """
         # collection = self.mongo_connection('rrgmp', 'gmpRequest')
         item_result = self.collection.find_one(
             {
@@ -89,10 +93,45 @@ class MongoRequest(object):
                 '_id': 1,
                 'status': 1,
                 'lastUpdated': 1,
+                'receivedDate': 1,
                 'expireDate': 1,
-                'receivedDate': 1
+                'billingInfo.gmpStatus': 1,
+                'billingInfo.gmpStatusDate': 1,
+                'billingInfo.charge.supplierBillID': 1,
+                'billingInfo.prepaidAmount': 1,
+                'billingInfo.amountToPay': 1,
+                'billingInfo.chargePaymentStatus': 1,
+                'billingInfo.extRequestIds': 1,
+                'subscriptions': 1
             })
         # print(in_gmp + ' отработан')
+        return item_result
+
+    def get_request(self, in_bk):
+        """
+
+        :param in_bk:
+        :return:
+        """
+        item_result = self.collection.find_one(
+            {
+                '_id': in_bk
+            },
+            {
+                '_id': 1,
+                'region': 1,
+                'processInstanceId': 1,
+                'status': 1,
+                'statusHistory': 1,
+                'statements.billingInfo': 1,
+                'statements.actionCode': 1,
+                'packagePaymentExpiresDate': 1,
+                'gmpServiceResponse.quittances': 1,
+                'gmpServiceRequestNumber': 1,
+                'processingFlags': 1,
+                'awaitingPaymentCancel': 1,
+                'bpmNodeId.PPOZ': 1
+            })
         return item_result
 
         # def open_files(self, in_file_name_type):

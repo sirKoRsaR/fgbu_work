@@ -8,10 +8,102 @@ import classes.LogForever as LogForever
 param_list = {'MongoDB_req': ''}
 
 
+def task01_gmp_ppoz_compare():
+
+    from datetime import datetime, timedelta
+
+    delta = datetime.today() - timedelta(days=7)
+
+    result_list = LogForever.LogForever(task01_gmp_ppoz_compare.__name__, 'i')                     # Инициализация записи результата в лог
+    result_error = LogForever.LogForever(task01_gmp_ppoz_compare.__name__ + '_error', 'i')
+    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)                  # Инициализация камунды ГМП
+    server_mongo_gmp = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')         # Инициализация монги
+    server_mongo_request = MongoRequest.MongoRequest('rrpdb', 'requests')       # Инициализация монги
+    # server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]  # Инициализация камунд ППОЗ
+
+    spisok_gmp_box = ['timerPaymentStatusRetry',                                # Таймер проверки оплаты
+                      'taskCheckPaymentStatus'                                  # Проверка оплаты
+                      ]
+                    #['ServiceTask_0iavb3s']
+    result_list.put_msg(f"##########################################################################\n"
+                        f"Обращения, у которых есть коробка в Api GMP,но статус в Mongo - processed \n"
+                        f"и срок продления ожидания expireDate истек недлю назад\n "
+                        f"##########################################################################\n"
+                        f"GMP_id\tbusinessKey\tInstanse_Camunda_API\tGMP_BOX\texpireDate")
+    api_result = server_api_gmp.get_activity_process(spisok_gmp_box, return_type='json', in_variables=None)
+    for i in api_result:                    # Считываем каждую коробку, получаем список словарей (json) api_result[i]
+        for j in api_result[i]:             # считываем каждый json в коробке, получаем словарь (json) j
+            mongo_gmp = server_mongo_gmp.get_gmp_request(j['businessKey'])
+            # j.update(temp)                  # вставили в словарь
+            try:
+                mongo_gmp['billingInfo'][0]['extRequestIds'][0]
+            except IndexError:
+                result_error.put_msg(f"Error: не найден billingInfo.extRequestIds для {mongo_gmp['_id']}\t"
+                                     f"{j['id']}")
+                continue
+            mongo_req = server_mongo_request.get_request(mongo_gmp['billingInfo'][0]['extRequestIds'][0])
+            # print(mongo_req['_id'], mongo_req['bpmNodeId']['PPOZ'])
+            try:
+                mongo_req['_id']
+            except TypeError:
+                result_error.put_msg(f"Error: не найден requests для {mongo_gmp['_id']}")
+                continue
+            try:
+                mongo_gmp['status']
+            except TypeError:
+                result_error.put_msg(f"Error: не найден status в gmpRequest для {mongo_gmp['_id']}")
+                continue
+            try:
+                mongo_req['status']
+            except TypeError:
+                result_error.put_msg(f"Error: не найден status в requests для {mongo_req['_id']}")
+                continue
+            if mongo_req['status'] == 'processed' and mongo_gmp['status'] == 'awaitingPayment':
+                   # and mongo_gmp['expireDate'] < delta:
+                # В апи гмп висит а обращение завершено и срок истек неделю назад
+                result_list.put_msg(f"{mongo_gmp['_id']}\t{mongo_req['_id']}\t{j['id']}\t{i}\t"
+                                    f"{mongo_gmp['expireDate']}")
+                #print(mongo_req['_id'])
+            j['MongoDB_gmp'] = mongo_gmp  # вставили в словарь с новым key
+            j['MongoDB_request'] = mongo_gmp
+
+        # print(api_result[i])
+
+    # result_list.put_msg(f"'gmp_pid'\t'businessKey_gmp'\t"
+    #                     f"'BK_id'\t"
+    #                     f"'region'\t"
+    #                     f"'status_request'\t"
+    #                     f"'receivedDate'\t"
+    #                     f"'expireDate'\t"
+    #                     f"'gmpStatus'\t'"
+    #                     f"'status'\t"
+    #                     f"'supplierBillID'\t"
+    #                     f"'Shard'\t")
+    # for ii in api_result:
+    #     for jj in api_result[ii]:
+    #         result_list.put_msg(f"{jj['id']}\t{jj['businessKey']}\t"
+    #                             f"{jj['MongoDB_request']['_id']}\t"
+    #                             f"{jj['MongoDB_request']['region']}\t"
+    #                             f"{jj['MongoDB_request']['status']}\t"
+    #                             f"{jj['MongoDB_gmp']['receivedDate']}\t"
+    #                             f"{jj['MongoDB_gmp']['expireDate']}\t"
+    #                             f"{jj['MongoDB_gmp']['status']}\t"
+    #                             f"{jj['MongoDB_gmp']['billingInfo'][0]['gmpStatus']}\t"
+    #                             f"{jj['MongoDB_gmp']['billingInfo'][0]['charge']['supplierBillID']}\t"
+    #                             f"{jj['MongoDB_request']['bpmNodeId']['PPOZ']}\t")
+
+
+
 if __name__ == '__main__':
     args = sys.argv
     logger = LogForever.LogForever('project')
-    ChatRoom.get_initial_param(param_list)
+    # ChatRoom.get_initial_param(param_list)
+
+    task01_gmp_ppoz_compare()
+
+
+
+
     # if param_list['MongoDB_req'] == 'test':
     #     server_api_ppoz = [CamundaAPI.CamundaAPI(config.camunda_shard[i]) for i in range(len(config.shard_ppoz_num))]
     #     server_api_ppoz.api_req_starter()
@@ -20,19 +112,21 @@ if __name__ == '__main__':
     #     request_in_mongodb.mongo_req_starter()
     # chat_room.get_final()
 
-    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)  # Инициализация камунды ГМП
+    # server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)  # Инициализация камунды ГМП
     # server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
-    server_api_shard06 = CamundaAPI.CamundaAPI(config.camunda_shard[6])
+    # server_api_shard06 = CamundaAPI.CamundaAPI(config.camunda_shard[6])
     # server_mongo = MongoRequest.MongoRequest('rrgmp', 'gmpRequest') # Инициализация монги
 
-    spisok_gmp_box = ['taskCheckPaymentStatus']
-    spisok_shard_box = [#'notificationSettingsTask',
-                        #'kuvdFixation',
-                        #'senderSystem',
-                        'infoMessage']
-    return_type = 'count'
-    spisok_variable = ['incident']
-    result_api_shard = []
+    # spisok_gmp_box = ['timerPaymentStatusRetry',    #таймер проверки оплаты
+    #                   'taskCheckPaymentStatus'      #проверка оплаты
+    #                   ]
+    # spisok_shard_box = [#'notificationSettingsTask',
+    #                     #'kuvdFixation',
+    #                     #'senderSystem',
+    #                     'infoMessage']
+    # return_type = 'count'
+    # spisok_variable = ['incident']
+    # result_api_shard = []
 
     # for i in server_api_ppoz:
     #     result_api_shard = result_api_shard + [i.get_activity_process(spisok_shard_box, return_type, spisok_variable)]
@@ -41,18 +135,19 @@ if __name__ == '__main__':
     # print(mm)
 
     # выод списка инцидентов по камунде гмп
-    gmp_inc = server_api_gmp.get_incident_process(return_type='json')
-    #print(gmp_inc)
-
-    for nn in gmp_inc:
-        print(nn)
-        for mm in gmp_inc[nn]:
-            # if mm['incidentMessage'] == 'Ошибка СМЭВ: SMEV-1: Внутренняя ошибка сервиса':
-            #     server_api_gmp.restart_box(mm['activityId'], mm['processInstanceId'])
-            #     print(mm['activityId'], mm['processInstanceId'])
-            #print(mm)
-            pass
-        print(len(gmp_inc[nn]))
+    # gmp_inc = server_api_gmp.get_activity_process(spisok_gmp_box, return_type='count')
+    # #print(gmp_inc)
+    #
+    # for nn in gmp_inc:
+    #     print(nn)
+    #     print(gmp_inc[nn]['count'])
+    #   #  for mm in gmp_inc[nn]:
+    #         # if mm['incidentMessage'] == 'Ошибка СМЭВ: SMEV-1: Внутренняя ошибка сервиса':
+    #         #     server_api_gmp.restart_box(mm['activityId'], mm['processInstanceId'])
+    #         #     print(mm['activityId'], mm['processInstanceId'])
+    #         #print(mm)
+    #         #pass
+    #     print(len(gmp_inc[nn]))
 
     # todo вынести в конфиг
     # Лечение по коробкам
