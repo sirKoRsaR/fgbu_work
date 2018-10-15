@@ -6,16 +6,16 @@ import sys
 import tasks.workshop as tasks
 import classes.LogForever as LogForever
 
-param_list = {'MongoDB_req': ''}
-
 
 if __name__ == '__main__':
     args = sys.argv
-    logger = LogForever.LogForever('project')
-    # ChatRoom.get_initial_param(param_list)
+    # logger = LogForever.LogForever('project')
+    # ChatRoom.get_initial_param(config.param_list)
 
-    #tasks.task01_gmp_ppoz_compare
-    tasks.task02_gmp_error()
+    # tasks.task01_gmp_ppoz_compare
+    # tasks.task02_gmp_error()
+    # tasks.task03_restart_inc_gmp()
+    tasks.task04_get_instanse_on_gmp()
 
     # if param_list['MongoDB_req'] == 'test':
     #     server_api_ppoz = [CamundaAPI.CamundaAPI(config.camunda_shard[i]) for i in range(len(config.shard_ppoz_num))]

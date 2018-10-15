@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import config
+import re
 import classes.MongoRequest as MongoRequest
 import classes.CamundaAPI as CamundaAPI
 import classes.LogForever as LogForever
@@ -134,4 +135,65 @@ def task02_gmp_error():
         pass
     finally:
         server_mongo_gmp.client_close()
+        server_mongo_request.client_close()
+
+
+def task03_restart_inc_gmp():
+    """
+    Задача по подсчету инцов в коробках и при необходимосте - рестарту
+    :return:
+    """
+    # result_list = LogForever.LogForever(task03_restart_inc_gmp.__name__, 'i')
+    # result_error = LogForever.LogForever(task03_restart_inc_gmp.__name__ + '_error', 'i')
+    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)  # Инициализация камунды ГМП
+
+    api_result = server_api_gmp.get_incident_process(return_type='json')
+    print(f"Incidents:")
+    for box in api_result:
+        print(f"\t{box}: {len(api_result[box])}")
+        for i in api_result[box]:
+            print(f"\t\tprocessInstanceId: {i['processInstanceId']}, {i}")
+            # if re.match('Нет данных о начислении с индексом', i['incidentMessage']):
+            #     print(f"\t\tprocessInstanceId: {i['processInstanceId']}, {i}")
+            #     server_api_gmp.restart_box(box, i['processInstanceId'])
+
+
+def task04_get_instanse_on_gmp():
+    """
+
+    :return:
+    """
+    result_list = LogForever.LogForever(task04_get_instanse_on_gmp.__name__, 'i')
+    result_error = LogForever.LogForever(task04_get_instanse_on_gmp.__name__ + '_error', 'i')
+
+    server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]      # Инициализация камунд ППОЗ
+    server_mongo_request = MongoRequest.MongoRequest('rrpdb', 'requests')           # Инициализация монги
+    api_result = {}
+    for server_ppoz in server_api_ppoz:             # сервера
+        api_result[server_ppoz] = server_ppoz.get_activity_process(in_activity=['call_ppoz_gmp'], return_type='json')
+        # print(api_result[server_ppoz])
+        for i in api_result[server_ppoz]:           # коробки
+            for j in api_result[server_ppoz][i]:    # json's
+                try:
+                    j.get('businessKey')
+                except AttributeError:
+                    result_error.put_msg(f"{j}")
+                    continue
+                mongo_requests = server_mongo_request.get_request(j['businessKey'])
+                try:
+                    mongo_requests.get
+                except AttributeError:
+                    result_error.put_msg(f"{j}")
+                    continue
+                result_list.put_msg(f"businessKey:{mongo_requests.get('_id', None)}\t"
+                                    f"region:{mongo_requests.get('region', None)}\t"
+                                    f"status:{mongo_requests.get('status', None)}\t"
+                                    f"state:{mongo_requests.get('state', None)}\t"
+                                    f"instance:{j.get('id', None)}")
+                j['MongoDB_requests'] = mongo_requests
+        # print(f"{config.camunda_shard[server_ppoz]}: {api_result}")
+
+    try:
+        pass
+    finally:
         server_mongo_request.client_close()

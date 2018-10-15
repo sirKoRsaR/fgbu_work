@@ -54,7 +54,7 @@ class CamundaAPI(object):
 
     def get_box_api(self, in_key):
         """
-
+        Метод: получение инстанса по BK
         :param in_key:
         :return:
         """
@@ -98,13 +98,12 @@ class CamundaAPI(object):
 
     def get_api_variable(self, in_json, in_variable):
         """
-
         Метод принимает json с данными и добавляет для каждой ветки данные по переменным
-
         :param in_json: json список процессов
         :param in_variable: обычный список парамметров для получения
         :return: в исходный json список добавляются json с данными параметрами
         """
+        self.logger.put_msg(f'Class: {__name__}.{self.get_api_variable.__name__} start method', 'info')
         if in_json is None or in_variable is None:
             self.logger.put_msg(f'NOT READ VARIABLES: Json or list of variables is empty', 'info')
             return
@@ -134,7 +133,7 @@ class CamundaAPI(object):
                                                                                req_get_data.content.decode('utf-8')),
                                             'error')
                     req_get_data.close()
-        self.logger.put_msg(f'\tFinish read Variables')
+        self.logger.put_msg(f'Class: {__name__}.{self.get_api_variable.__name__} close method', 'info')
 
     def get_inst_on_activity(self, in_activity):
         """
@@ -144,6 +143,7 @@ class CamundaAPI(object):
         :param in_activity: имя коробки
         :return: json со всеми инстансами на коробке
         """
+        self.logger.put_msg(f'Class: {__name__}.{self.get_inst_on_activity.__name__} start method', 'info')
         request_str = self.get_request_string('/process-instance?activityIdIn=' + in_activity)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
@@ -153,6 +153,7 @@ class CamundaAPI(object):
                                 'error')
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         req_get_data.close()
+        self.logger.put_msg(f'Class: {__name__}.{self.get_inst_on_activity.__name__} close method', 'info')
         return api_result
 
     def get_count_on_activity(self, in_activity):
@@ -163,6 +164,7 @@ class CamundaAPI(object):
         :param in_activity: имя коробки
         :return: jsin с количеством инстансов на коробке
         """
+        self.logger.put_msg(f'Class: {__name__}.{self.get_count_on_activity.__name__} start method', 'info')
         request_str = self.get_request_string('/process-instance/count?activityIdIn=' + in_activity)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
@@ -172,6 +174,7 @@ class CamundaAPI(object):
                                 'error')
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         req_get_data.close()
+        self.logger.put_msg(f'Class: {__name__}.{self.get_count_on_activity.__name__} close method', 'info')
         return api_result
 
     def get_dict_from_json_list(self, in_list, in_box_name=None):
@@ -181,6 +184,7 @@ class CamundaAPI(object):
         :param in_box_name: тэг коробки в конкретном списке, если None. то в псевдокоробка 'ALL_BOX'
         :return: словарь keys: box, values:[json's] со списками json
         """
+        self.logger.put_msg(f'Class: {__name__}.{self.get_dict_from_json_list.__name__} start method', 'info')
         api_result_array = {}
         temp_list = []
         try:
@@ -204,6 +208,7 @@ class CamundaAPI(object):
                 temp_list.append(i[in_box_name])
                 temp2_list.append(i)
                 api_result_array[i[in_box_name]] = temp2_list
+        self.logger.put_msg(f'Class: {__name__}.{self.get_dict_from_json_list.__name__} close method', 'info')
         return api_result_array
 
     def get_activity_process(self, in_activity=None, return_type='count', in_variables=None):
@@ -214,7 +219,7 @@ class CamundaAPI(object):
         :param return_type: count - счетчик; json - данные
         :return: Список Коробка:Данные
         """
-        self.logger.put_msg(f'Class: {__name__}', 'info')
+        self.logger.put_msg(f'Class: {__name__}.{self.get_activity_process.__name__} start method', 'info')
         print(f'{Fore.LIGHTBLUE_EX}{Style.NORMAL}'f'Начали получать сведения из {self.serverName}: ')
         api_result_array = {}
         if in_activity is None:
@@ -234,10 +239,10 @@ class CamundaAPI(object):
                 elif return_type == 'count':
                     api_result = self.get_count_on_activity(in_activity[i])
                     api_result_array[in_activity[i]] = api_result
-                    self.logger.put_msg(f'\tCount activity on box: {api_result["count"]}', 'info')
+                    self.logger.put_msg(f'\tCount activity on box {in_activity[i]}: {api_result["count"]}', 'info')
                 else:
                     api_result_array = None
-                self.logger.put_msg(f'Read box {in_activity[i]} finish', 'info')
+        self.logger.put_msg(f'Class: {__name__}.{self.get_activity_process.__name__} close method', 'info')
         return api_result_array
 
     def get_incident_process(self, in_activity=None, return_type='count', in_variables=None):
@@ -248,7 +253,7 @@ class CamundaAPI(object):
         :param return_type: count - счетчик; json - данные
         :return: json Список Коробка:инциденты (счетчик)
         """
-        self.logger.put_msg(f'Class: {__name__}', 'info')
+        self.logger.put_msg(f'Class: {__name__}.{self.get_incident_process.__name__} start method', 'info')
         print(f'{Fore.LIGHTBLUE_EX}{Style.NORMAL}'f'Начали получать сведения с {self.serverName}: ')
         api_result_array = {}
         if in_activity is None:
@@ -293,6 +298,7 @@ class CamundaAPI(object):
                 elif return_type == 'count':
                     self.logger.put_msg(f'\tCount incident on box: {api_result["count"]}', 'info')
                 self.logger.put_msg(f'Read box {in_activity[i]} finish', 'info')
+        self.logger.put_msg(f'Class: {__name__}.{self.get_incident_process.__name__} close method', 'info')
         return api_result_array
 
     def get_cur_inst_time(self, iid):
@@ -303,7 +309,7 @@ class CamundaAPI(object):
         :param iid: айди процесса
         :return: спсиок содержащий бизнес кей + время начала выполнения коробки
         """
-        # logger = logging.getLogger('incidents_stat.camunda_report.get_cur_inst_time')
+        self.logger.put_msg(f'Class: {__name__}.{self.get_cur_inst_time.__name__} start method', 'info')
         ct = datetime.datetime.today()
         td = datetime.timedelta(hours=24)
         request_str = self.get_request_string('/history/process-instance/' + iid)
@@ -324,3 +330,4 @@ class CamundaAPI(object):
                     req_get_data.close()
                 return ret
         req_get_data.close()  # Закрываем сессию
+        self.logger.put_msg(f'Class: {__name__}.{self.get_cur_inst_time.__name__} close method', 'info')
