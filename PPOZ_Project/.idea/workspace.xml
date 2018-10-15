@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tasks/workshop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/DjangoSite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/CamundaAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/CamundaAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/MongoRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/MongoRequest.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,28 +28,29 @@
         <counts>
           <entry key="cfg" value="2" />
           <entry key="ipynb" value="2" />
-          <entry key="py" value="36" />
+          <entry key="py" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IPNB" value="2" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="36" />
+          <entry key="Python" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="Python Console" value="11" />
           <entry key="cfg" value="1" />
           <entry key="dummy" value="7" />
-          <entry key="py" value="20585" />
-          <entry key="txt" value="485" />
+          <entry key="py" value="22100" />
+          <entry key="txt" value="503" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="493" />
-          <entry key="Python" value="20585" />
+          <entry key="PLAIN_TEXT" value="511" />
+          <entry key="Python" value="22111" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -91,13 +92,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4624">
-              <caret line="272" column="13" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="13" />
+            <state relative-caret-position="-1003">
+              <caret line="158" column="29" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="29" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1539597287000" expanded="true" signature="1083:1088" ph="..." />
-                <marker date="1539597287000" expanded="true" signature="2863:2869" ph="..." />
-                <marker date="1539597287000" expanded="true" signature="11405:11409" ph="..." />
+                <marker date="1539608115344" expanded="true" signature="1083:1088" ph="..." />
+                <marker date="1539608115344" expanded="true" signature="2902:2908" ph="..." />
+                <marker date="1539608115344" expanded="true" signature="12344:12348" ph="..." />
               </folding>
             </state>
           </provider>
@@ -106,21 +107,45 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2278">
-              <caret line="134" column="43" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
+            <state relative-caret-position="331">
+              <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="4" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1539360987975" expanded="true" signature="1132:1232" ph="..." />
+                <marker date="1539619827758" expanded="true" signature="1145:1245" ph="..." />
+                <marker date="1539619827758" expanded="true" signature="5424:5432" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/classes/DjangoSite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/workshop.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="569">
+              <caret line="198" column="43" selection-start-line="198" selection-start-column="43" selection-end-line="198" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+                <marker date="1539611141245" expanded="true" signature="7638:7639" ph="..." />
+                <marker date="1539611141245" expanded="true" signature="8672:8673" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-850">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="255">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -129,22 +154,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tasks/workshop.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2312">
-              <caret line="136" column="43" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="114" selection-start-line="29" selection-start-column="114" selection-end-line="29" selection-end-column="114" />
+            <state relative-caret-position="391">
+              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -179,6 +192,7 @@
       <find>DB_re</find>
       <find>bpmNode</find>
       <find>mongodb</find>
+      <find>inde</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -201,14 +215,15 @@
         <option value="$PROJECT_DIR$/classes/Logging.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/classes/LogForever.py" />
-        <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/classes/MongoRequest.py" />
-        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
         <option value="$PROJECT_DIR$/task01_gmp_ppoz_compare.py" />
         <option value="$PROJECT_DIR$/tasks/task01_gmp_ppoz_compare.py" />
         <option value="$PROJECT_DIR$/tasks/task02_gmp_error.py" />
-        <option value="$PROJECT_DIR$/tasks/workshop.py" />
+        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/start_process.py" />
+        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
+        <option value="$PROJECT_DIR$/tasks/workshop.py" />
+        <option value="$PROJECT_DIR$/classes/MongoRequest.py" />
+        <option value="$PROJECT_DIR$/classes/DjangoSite.py" />
       </list>
     </option>
   </component>
@@ -249,6 +264,22 @@
             <path>
               <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Site" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Site" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Site" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -537,26 +568,39 @@
       <option name="project" value="LOCAL" />
       <updated>1539360260363</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add tasks.workshop">
+      <created>1539600908515</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1539600908515</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add tasks.workshop">
+      <created>1539617490965</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1539617490965</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="266" y="1" width="1622" height="1055" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2550505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8194444" visible="true" weight="0.330076" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8194444" weight="0.330076" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993598" weight="0.3995657" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32899022" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.18055555" side_tool="true" weight="0.330076" />
       <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -624,7 +668,8 @@
     <MESSAGE value="Добавлена функция преобразования списка с json в словарь key:box_name : value:List_of_json&#10;Изменен вывод метода get_incident_process: при указании json на выходе всегда словарь со списками json (key:box_name : value:List_of_json, если имя коробки не указано, то псевдоимя ALL_BOX)" />
     <MESSAGE value="Add task01_gmp_ppoz_compare&#10;Обработка задач связанных с гмп" />
     <MESSAGE value="Add task02_gmp_error&#10;Выявление начислений, где ГИС ГМП вернул ошибку, обработка статусов и&#10;состояний." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add task02_gmp_error&#10;Выявление начислений, где ГИС ГМП вернул ошибку, обработка статусов и&#10;состояний." />
+    <MESSAGE value="add tasks.workshop" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tasks.workshop" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config.cfg">
@@ -680,37 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4624">
-          <caret line="272" column="13" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1539597287000" expanded="true" signature="1083:1088" ph="..." />
-            <marker date="1539597287000" expanded="true" signature="2863:2869" ph="..." />
-            <marker date="1539597287000" expanded="true" signature="11405:11409" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2278">
-          <caret line="134" column="43" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1539360987975" expanded="true" signature="1132:1232" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="114" selection-start-line="29" selection-start-column="114" selection-end-line="29" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -738,23 +752,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/workshop.py">
+    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2312">
-          <caret line="136" column="43" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
+        <state relative-caret-position="-1003">
+          <caret line="158" column="29" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="29" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1539608115344" expanded="true" signature="1083:1088" ph="..." />
+            <marker date="1539608115344" expanded="true" signature="2902:2908" ph="..." />
+            <marker date="1539608115344" expanded="true" signature="12344:12348" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/start_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-850">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="255">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/workshop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="198" column="43" selection-start-line="198" selection-start-column="43" selection-end-line="198" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <marker date="1539611141245" expanded="true" signature="7638:7639" ph="..." />
+            <marker date="1539611141245" expanded="true" signature="8672:8673" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1539619827758" expanded="true" signature="1145:1245" ph="..." />
+            <marker date="1539619827758" expanded="true" signature="5424:5432" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/DjangoSite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>

@@ -1,5 +1,6 @@
 import json
 import datetime
+import js2py
 from bson import json_util
 import config
 import classes.LogForever as LogForever
@@ -153,6 +154,8 @@ class MongoRequest(object):
             }
         )
         return item_result
+
+            # PKPVDMFC-2018-08-15-085750
 
     # def get_request_univers(self,
     #                         in_query_param={'_id': '34/15380/2018-3193', 'requestType': 'egron'}):
