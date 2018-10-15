@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="Add task02_gmp_error&#10;Выявление начислений, где ГИС ГМП вернул ошибку, обработка статусов и&#10;состояний.">
+    <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tasks/workshop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/CamundaAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/CamundaAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/MongoRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/MongoRequest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_process.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,37 +17,39 @@
     <session id="-1793111102">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.44" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cfg" value="2" />
           <entry key="ipynb" value="2" />
-          <entry key="py" value="29" />
+          <entry key="py" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IPNB" value="2" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="29" />
+          <entry key="Python" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cfg" value="1" />
           <entry key="dummy" value="7" />
-          <entry key="py" value="20349" />
+          <entry key="py" value="20585" />
           <entry key="txt" value="485" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="493" />
-          <entry key="Python" value="20349" />
+          <entry key="Python" value="20585" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -90,12 +91,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+            <state relative-caret-position="4624">
+              <caret line="272" column="13" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="13" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1539356175881" expanded="true" signature="2246:2254" ph="..." />
-                <marker date="1539356175881" expanded="true" signature="10790:10794" ph="..." />
+                <marker date="1539597287000" expanded="true" signature="1083:1088" ph="..." />
+                <marker date="1539597287000" expanded="true" signature="2863:2869" ph="..." />
+                <marker date="1539597287000" expanded="true" signature="11405:11409" ph="..." />
               </folding>
             </state>
           </provider>
@@ -104,12 +106,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="140" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="2278">
+              <caret line="134" column="43" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1539359132192" expanded="true" signature="1132:1232" ph="..." />
-                <marker date="1539359132192" expanded="true" signature="4767:5411" ph="..." />
+                <marker date="1539360987975" expanded="true" signature="1132:1232" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/start_process.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-850">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks/workshop.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2312">
+              <caret line="136" column="43" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,23 +149,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/start_process.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="129" column="90" selection-start-line="129" selection-start-column="90" selection-end-line="129" selection-end-column="90" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <marker date="1539359573299" expanded="true" signature="571:7500" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="102">
               <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -189,9 +201,13 @@
         <option value="$PROJECT_DIR$/classes/Logging.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/classes/LogForever.py" />
-        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/classes/MongoRequest.py" />
+        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
+        <option value="$PROJECT_DIR$/task01_gmp_ppoz_compare.py" />
+        <option value="$PROJECT_DIR$/tasks/task01_gmp_ppoz_compare.py" />
+        <option value="$PROJECT_DIR$/tasks/task02_gmp_error.py" />
+        <option value="$PROJECT_DIR$/tasks/workshop.py" />
         <option value="$PROJECT_DIR$/start_process.py" />
       </list>
     </option>
@@ -234,6 +250,11 @@
               <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
+            <path>
+              <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="tasks" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -259,6 +280,11 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\!Docum\Work\Python_PsyCharm\PPOZ_Project\tasks" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -504,14 +530,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539333545660</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add task02_gmp_error&#10;Выявление начислений, где ГИС ГМП вернул ошибку, обработка статусов и&#10;состояний.">
+      <created>1539360260363</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1539360260363</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="266" y="1" width="1622" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25544176" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2550505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -525,30 +558,32 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.18055555" side_tool="true" weight="0.330076" />
+      <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" x="0" y="0" width="318" height="855" id="Documentation" order="3" side_tool="true" weight="0.3290653" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.25264645" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50035286" side_tool="true" weight="0.330076" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32899022" />
-      <window_info anchor="bottom" id="Python Console" order="3" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49964714" weight="0.330076" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" x="0" y="0" width="318" height="855" id="Documentation" order="0" side_tool="true" weight="0.3293201" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2550505" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8194444" weight="0.330076" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993598" weight="0.3995657" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.18055555" side_tool="true" weight="0.330076" />
+      <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.32899022" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" x="0" y="0" width="318" height="855" id="Documentation" order="3" side_tool="true" weight="0.3290653" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -588,7 +623,8 @@
     <MESSAGE value="test2" />
     <MESSAGE value="Добавлена функция преобразования списка с json в словарь key:box_name : value:List_of_json&#10;Изменен вывод метода get_incident_process: при указании json на выходе всегда словарь со списками json (key:box_name : value:List_of_json, если имя коробки не указано, то псевдоимя ALL_BOX)" />
     <MESSAGE value="Add task01_gmp_ppoz_compare&#10;Обработка задач связанных с гмп" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add task01_gmp_ppoz_compare&#10;Обработка задач связанных с гмп" />
+    <MESSAGE value="Add task02_gmp_error&#10;Выявление начислений, где ГИС ГМП вернул ошибку, обработка статусов и&#10;состояний." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add task02_gmp_error&#10;Выявление начислений, где ГИС ГМП вернул ошибку, обработка статусов и&#10;состояний." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config.cfg">
@@ -627,12 +663,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
+    <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        <state relative-caret-position="408">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -644,36 +680,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+        <state relative-caret-position="4624">
+          <caret line="272" column="13" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="13" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <marker date="1539356175881" expanded="true" signature="2246:2254" ph="..." />
-            <marker date="1539356175881" expanded="true" signature="10790:10794" ph="..." />
+            <marker date="1539597287000" expanded="true" signature="1083:1088" ph="..." />
+            <marker date="1539597287000" expanded="true" signature="2863:2869" ph="..." />
+            <marker date="1539597287000" expanded="true" signature="11405:11409" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        <state relative-caret-position="2278">
+          <caret line="134" column="43" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1539359132192" expanded="true" signature="1132:1232" ph="..." />
-            <marker date="1539359132192" expanded="true" signature="4767:5411" ph="..." />
+            <marker date="1539360987975" expanded="true" signature="1132:1232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -685,13 +711,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task01_gmp_ppoz_compare.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="88" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task02_gmp_error.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="51" column="43" lean-forward="true" selection-start-line="5" selection-end-line="51" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/workshop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2312">
+          <caret line="136" column="43" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/start_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="129" column="90" selection-start-line="129" selection-start-column="90" selection-end-line="129" selection-end-column="90" />
+        <state relative-caret-position="-850">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1539359573299" expanded="true" signature="571:7500" ph="..." />
           </folding>
         </state>
       </provider>

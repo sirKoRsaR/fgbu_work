@@ -31,8 +31,18 @@ class CamundaAPI(object):
     def get_server_name(self):
         return self.serverName
 
-    # def get_list_act_box_from_shard(self):
-    # TODO сборщик актуальных коробок в камундах
+    def get_list_act_box_from_shard(self):
+        # TODO сборщик актуальных коробок в камундах
+        request_str = self.get_request_string('process-definition/key/ppoz_validation_sign/xml')
+        req_get_data = self.session.get(request_str)
+        if req_get_data.status_code != 200:
+            self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                   req_get_data.status_code,
+                                                                   req_get_data.content.decode('utf-8')),
+                                'error')
+        api_result = json.loads(req_get_data.content.decode('utf-8'))
+        return api_result
+
 
     @staticmethod
     def get_json_element(in_json, in_find_element):
@@ -59,8 +69,6 @@ class CamundaAPI(object):
         return api_result
 
     # def get_instance_ppoz_bk(self, in_bk=None):
-
-
 
     def restart_box(self, in_activity=None, in_instance=None):
         """
@@ -234,16 +242,14 @@ class CamundaAPI(object):
 
     def get_incident_process(self, in_activity=None, return_type='count', in_variables=None):
         """
-
-        Функция возвращает json  с данными с инцидентами (если коробка не задана, то возвращает все инцеденты)
-
+        Функция возвращает json  с данными по инцидентам (если коробка не задана, то возвращает все инцеденты)
         :param in_variables: не используется
         :param in_activity: список имен коробок, если пусто, то все инциденты
         :param return_type: count - счетчик; json - данные
         :return: json Список Коробка:инциденты (счетчик)
         """
         self.logger.put_msg(f'Class: {__name__}', 'info')
-        print(f'{Fore.LIGHTBLUE_EX}{Style.NORMAL}'f'Начали получать сведения из {self.serverName}: ')
+        print(f'{Fore.LIGHTBLUE_EX}{Style.NORMAL}'f'Начали получать сведения с {self.serverName}: ')
         api_result_array = {}
         if in_activity is None:
             if return_type == 'json':
