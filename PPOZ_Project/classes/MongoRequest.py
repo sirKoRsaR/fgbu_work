@@ -19,7 +19,7 @@ class MongoRequest(object):
         self.client = MongoClient(config.mongodb_conn)
         self.collection = self.mongo_connection(self.client, in_bd, in_collection)
         self.logger = LogForever.LogForever('MongoDB')
-        self.logger.put_msg(f'Server PPOZ MongoDB {in_bd}.{in_collection} initialize', 'info')
+        self.logger.put_msg(f'Class: {__name__}.{in_bd}.{in_collection} initialize', 'info')
 
     def mongo_req_starter(self):
         if self.param_list['MongoDB_req'] == '1':
@@ -155,6 +155,31 @@ class MongoRequest(object):
         )
         return item_result
 
+    def get_query(self, in_query, in_projection=None):
+        projection = {}
+        if in_projection is None:
+            projection = {
+                            '_id': 1,
+                            'region': 1,
+                            'processInstanceId': 1,
+                            'status': 1,
+                            'state': 1,
+                            'requestType': 1,
+                            'statusHistory': 1,
+                            'statements.billingInfo': 1,
+                            'statements.actionCode': 1,
+                            'packagePaymentExpiresDate': 1,
+                            'gmpServiceResponse.quittances': 1,
+                            'gmpServiceRequestNumber': 1,
+                            'processingFlags': 1,
+                            'awaitingPaymentCancel': 1,
+                            'bpmNodeId.PPOZ': 1
+                        }
+        else:
+            projection = in_projection
+        sort = []
+        item_result = self.collection.find(in_query, projection=projection, sort=sort)
+        return item_result
             # PKPVDMFC-2018-08-15-085750
 
     # def get_request_univers(self,

@@ -124,7 +124,7 @@ def task02_gmp_error():
             # print(temp_api)
             result_list.put_msg(f"{temp_json['_id']}\t{temp_json.get('status')}\t{temp_json.get('state')}\t"
                                 f"{i['_id']}\t{temp_json['bpmNodeId']['PPOZ']}\t{temp_api}")
-                                #f"{i['billingInfo'][0]['errorMessage']['error']}")
+                                # f"{i['billingInfo'][0]['errorMessage']['error']}")
             i['API'] = temp_api
         i['Requests'] = temp_json
         # print(i)
@@ -158,19 +158,19 @@ def task03_restart_inc_gmp():
             #     server_api_gmp.restart_box(box, i['processInstanceId'])
 
 
-def task04_get_instanse_on_gmp():
+def task04_get_instance_on_gmp():
     """
 
     :return:
     """
-    result_list = LogForever.LogForever(task04_get_instanse_on_gmp.__name__, 'i')
-    result_error = LogForever.LogForever(task04_get_instanse_on_gmp.__name__ + '_error', 'i')
+    result_list = LogForever.LogForever(task04_get_instance_on_gmp.__name__, 'i')
+    result_error = LogForever.LogForever(task04_get_instance_on_gmp.__name__ + '_error', 'i')
 
     server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]      # Инициализация камунд ППОЗ
     server_mongo_request = MongoRequest.MongoRequest('rrpdb', 'requests')           # Инициализация монги
     api_result = {}
     for server_ppoz in server_api_ppoz:             # сервера
-        api_result[server_ppoz] = server_ppoz.get_activity_process(in_activity=['call_ppoz_gmp'], return_type='json')
+        api_result[server_ppoz] = server_ppoz.get_activity_process(in_activity=['call_ppoz_gmp'], return_type='count')
         # print(api_result[server_ppoz])
         for i in api_result[server_ppoz]:           # коробки
             for j in api_result[server_ppoz][i]:    # json's
@@ -197,3 +197,110 @@ def task04_get_instanse_on_gmp():
         pass
     finally:
         server_mongo_request.client_close()
+
+
+def task05_not_ans_gmp_to_ppoz():
+    """
+
+    :return:
+    """
+    in_bk = 'PKPVDMFC-2018-07-09-013075'
+    gmp_projection = {
+                '_id': 1,
+                'status': 1,
+                'lastUpdated': 1,
+                'receivedDate': 1,
+                'expireDate': 1,
+                'billingInfo.gmpStatus': 1,
+                'billingInfo.gmpStatusDate': 1,
+                'billingInfo.charge.supplierBillID': 1,
+                'billingInfo.prepaidAmount': 1,
+                'billingInfo.amountToPay': 1,
+                'billingInfo.chargePaymentStatus': 1,
+                'billingInfo.extRequestIds': 1,
+                'subscriptions': 1
+            }
+
+    result_list = LogForever.LogForever(task05_not_ans_gmp_to_ppoz.__name__, 'i')
+    result_error = LogForever.LogForever(task05_not_ans_gmp_to_ppoz.__name__ + '_error', 'i')
+    server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]  # Инициализация камунд ППОЗ
+    server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
+    server_gmp = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')
+
+    status_request = server_request.get_query({"status": "awaitingPayment"})
+    for i in status_request:
+        # print(i)
+        try:
+            i['_id']
+        except KeyError:
+            result_error.put_msg(f"None BK")
+            continue
+        if i.get('status') is None:
+            result_error.put_msg(f"BK:{i.get('_id')}\tStatus:None\tgmpRequest:None")
+            continue
+        shard_index = config.shard_ppoz_name.index(i['bpmNodeId']['PPOZ'])
+        api_result = server_api_ppoz[shard_index].get_box_api(i['_id'])
+        box_ids = []
+        for j in api_result:
+            box_ids.append(j['definitionId'])
+        box_names = server_api_ppoz[shard_index].get_box_by_definition_id(box_ids)
+        status_gmp = server_gmp.get_query({'billingInfo.extRequestIds': i['_id']}, gmp_projection)
+        gmp_result = {'_id': [], 'receivedDate': [], 'expireDate': [], 'status': [], 'billingInfo': [],
+                      'lastUpdated': []}
+        for n in status_gmp:
+            gmp_result['_id'].append(n['_id'])
+            gmp_result['status'].append(n['status'])
+            gmp_result['receivedDate'].append(n['receivedDate'])
+            gmp_result['expireDate'].append(n['expireDate'])
+            gmp_result['billingInfo'].append(n['billingInfo'])
+            try:
+                gmp_result['lastUpdated'].append(n['lastUpdated'])
+            except KeyError:
+                pass
+        if status_gmp is None:
+            result_error.put_msg(f"BK:{i['_id']}\tStatus:{i['status']}\tgmpRequest:{i['gmpServiceRequestNumber']}\tNone")
+            continue
+        result_list.put_msg(f"BK:{i['_id']}\tStatus:{i['status']}\tgmpRequest:{gmp_result['_id']}\t"
+                            f"State:{i.get('state')}\trequestType:{i.get('requestType')}\t"
+                            f"Status_gmp:{gmp_result['status']}\tOn_ppoz_box:{box_names}\t"
+                            f"lastUpdated:{gmp_result['lastUpdated']}")
+
+    # for bk_count in in_bk:
+    #     bd_request = server_request.get_request(in_bk=bk_count)                     # сведения монго.реквест
+    #     print(bd_request)
+    #     if bd_request is None:
+    #         result_error.put_msg(f"Error: Not find {bk_count} in MongoDB.requests")
+    #         continue
+    #     if bd_request['gmpServiceRequestNumber'] is None:
+    #         result_error.put_msg(f"Error: Not find gmpServiceRequestNumber for {bk_count} in MongoDB.requests")
+    #         continue
+    #     bd_gmp = server_gmp.get_gmp_request(bd_request['gmpServiceRequestNumber'])  # сведения монго.гмпРеквест
+    #     if bd_gmp is None:
+    #         result_error.put_msg(f"Error: Not find data un MongoDB.gmpRequest for {bk_count}")
+    #         continue
+    #     print(bd_gmp)
+    #     if bd_gmp['status'] in ['timeouted', 'awaitingPayment'] \
+    #             and bd_request in ['timeouted', 'awaitingPayment'] \
+    #             and bd_gmp['expireDate'] < (datetime.today() - timedelta(days=1)):  # если статус таймаут и дата вышла
+    #         shard_index = config.shard_ppoz_name.index(bd_request['bpmNodeId']['PPOZ'])
+    #         api_result = server_api_ppoz[shard_index].\
+    #             get_box_api(in_key=bd_request['_id'])                               # получаем инстансы камунды
+    #         print(api_result)
+    #         box_ids = []
+    #         for i in api_result:
+    #             box_ids.append(i['definitionId'])                                   # собрали все бизнес-ид
+    #         box_names = server_api_ppoz[shard_index].\
+    #             get_box_by_definition_id(box_ids)                                   # перевели в бизнес-имя
+    #         if 'ppoz_gmp' in box_names:                                             # если есть ppoz_gmp
+    #             # server_api_ppoz[shard_index].restart_box(in_activity='ppoz_gmp', in_instance=)
+    #             # 5ceb7f10-a20a-11e8-96c6-fa163e92a0fc
+    #             print(bd_request['_id'])
+    #         # print(bd_request)
+            # print(bd_gmp)
+            # print(api_result)
+
+    try:
+        pass
+    finally:
+        server_request.client_close()
+        server_gmp.client_close()

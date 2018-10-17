@@ -6,7 +6,7 @@ import os
 class LogForever(object):
 
     def __init__(self, in_log_type, in_format=None):
-        self.log_name = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '_' + in_log_type
+        self.log_name = datetime.datetime.now().strftime("%Y-%m-%d") + '_' + in_log_type    # _%H-%M-%S
         # logging.basicConfig(level=logging.INFO,
         #                     format=logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s'))
         self.log_worker = logging.getLogger(self.log_name)

@@ -15,7 +15,8 @@ if __name__ == '__main__':
     # tasks.task01_gmp_ppoz_compare
     # tasks.task02_gmp_error()
     # tasks.task03_restart_inc_gmp()
-    tasks.task04_get_instanse_on_gmp()
+    # tasks.task04_get_instance_on_gmp()
+    tasks.task05_not_ans_gmp_to_ppoz()
 
     # if param_list['MongoDB_req'] == 'test':
     #     server_api_ppoz = [CamundaAPI.CamundaAPI(config.camunda_shard[i]) for i in range(len(config.shard_ppoz_num))]

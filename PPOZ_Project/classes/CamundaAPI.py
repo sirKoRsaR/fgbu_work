@@ -58,6 +58,7 @@ class CamundaAPI(object):
         :param in_key:
         :return:
         """
+        self.logger.put_msg(f'Class: {__name__}.{self.get_box_api.__name__} start method', 'info')
         request_str = self.get_request_string('/process-instance?businessKey=' + in_key)
         req_get_data = self.session.get(request_str)
         if req_get_data.status_code != 200:
@@ -66,9 +67,31 @@ class CamundaAPI(object):
                                                                    req_get_data.content.decode('utf-8')),
                                 'error')
         api_result = json.loads(req_get_data.content.decode('utf-8'))
+        req_get_data.close()
+        self.logger.put_msg(f'Class: {__name__}.{self.get_box_api.__name__} close method', 'info')
         return api_result
 
     # def get_instance_ppoz_bk(self, in_bk=None):
+
+    def get_box_by_definition_id(self, in_id=None):
+        self.logger.put_msg(f'Class: {__name__}.{self.get_box_by_definition_id.__name__} start method', 'info')
+        if in_id is None:
+            self.logger.put_msg(f'No input definition_id', 'info')
+            return
+        box_names = []
+        for i in in_id:
+            request_str = self.get_request_string('/process-definition/' + i + '?latestVersion=true')
+            req_get_data = self.session.get(request_str)
+            if req_get_data.status_code != 200:
+                self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                       req_get_data.status_code,
+                                                                       req_get_data.content.decode('utf-8')),
+                                    'error')
+            api_result = json.loads(req_get_data.content.decode('utf-8'))
+            box_names.append(api_result['key'])
+            req_get_data.close()
+        self.logger.put_msg(f'Class: {__name__}.{self.get_box_by_definition_id.__name__} close method', 'info')
+        return box_names
 
     def restart_box(self, in_activity=None, in_instance=None):
         """
