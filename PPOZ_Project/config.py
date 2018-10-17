@@ -26,7 +26,15 @@ shard_ppoz_num = [
 camunda_shard = ['http://ppoz-process-core-' + i + '.prod.egrn:9084' for i in shard_ppoz_num]
 camunda_gmp = 'http://ppoz-gmp-process-01.prod.egrn:9080'
 camunda_pkurp = 'http://ppoz-pkurp-process-01.prod.egrn:8080'
+
+camunda = {'ppoz_name': [i for i in shard_ppoz_name],
+           'ppoz_num': [i for i in shard_ppoz_num],
+           'server': [i for i in camunda_shard],
+           'gmp': camunda_gmp,
+           'pkurp': camunda_pkurp}
+
 mongodb_conn = ['mongodb://support:support@ppoz-mongos-request-07.prod.egrn:27017']
+post_arm_gmp = 'http://ppoz-gmp-bal-01.prod.egrn:9003/rest/tech/resendstatus'
 
 param_list = {'MongoDB_req': ''}
 
@@ -40,3 +48,7 @@ get_from_mongo = 'yes'
 terminal_status = ['processed', 'rejected', 'obstacles_not_removed', 'returned', 'interrupted', 'validationError',
                    'validationError_EGRN', 'noInformation', 'validationError_SID']
 suspended_status = ['suspended', 'pkurp_suspended_by_declarant']
+
+status = {'terminal': terminal_status,
+          'suspended': suspended_status}
+

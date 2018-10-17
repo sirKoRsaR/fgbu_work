@@ -1,5 +1,5 @@
 from typing import Dict, Any
-
+import config
 import requests
 import json
 import datetime
@@ -118,6 +118,21 @@ class CamundaAPI(object):
         request_str = self.get_request_string('/process-instance/' + in_instance + '/modification')
         r = requests.post(request_str, json=restart_body, headers=headers)
         self.logger.put_msg(f'\tRestart instance = {in_instance} on BOX = {in_activity} is {r}')
+
+    def post_arm_gmp(self, in_gmp_key, in_status):
+        self.logger.put_msg(f'Class: {__name__}.{self.post_arm_gmp.__name__} start POST method', 'info')
+        return_value = None
+        request_post = requests.post(config.post_arm_gmp, data={'businessKey': in_gmp_key, 'status': in_status})
+        if request_post.status_code == 200:
+            return_value = request_post.reason
+        elif request_post.status_code != 200:
+            self.logger.put_msg('\tServer {} answer: {} {}'
+                                .format(self.serverName, request_post.status_code,
+                                        request_post.content.decode('utf-8')), 'error')
+            return_value = f"Error:{request_post.status_code}"
+        self.logger.put_msg(f'Result:{request_post.reason}', 'info')
+        self.logger.put_msg(f'Class: {__name__}.{self.post_arm_gmp.__name__} finish POST method', 'info')
+        return return_value
 
     def get_api_variable(self, in_json, in_variable):
         """
