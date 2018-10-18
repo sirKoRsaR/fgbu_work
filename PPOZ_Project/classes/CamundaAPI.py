@@ -31,6 +31,12 @@ class CamundaAPI(object):
     def get_server_name(self):
         return self.serverName
 
+    def test_threading(self):
+        from time import sleep
+        print('Start:', self.serverName, __name__)
+        sleep(5)
+        print('Finish:', self.serverName, __name__)
+
     def get_list_act_box_from_shard(self):
         # TODO сборщик актуальных коробок в камундах
         request_str = self.get_request_string('process-definition/key/ppoz_validation_sign/xml')

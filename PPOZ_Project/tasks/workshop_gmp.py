@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import config
 import re
+import threading
 import classes.MongoRequest as MongoRequest
 import classes.CamundaAPI as CamundaAPI
 import classes.LogForever as LogForever
@@ -265,6 +266,50 @@ def task05_not_ans_gmp_to_ppoz():
                             f"State:{i.get('state')}\trequestType:{i.get('requestType')}\t"
                             f"Status_gmp:{gmp_result['status']}\tOn_ppoz_box:{box_names}\t"
                             f"lastUpdated:{gmp_result['lastUpdated']}")
+        status_flag = True
+        # print(gmp_result)
+        for m in gmp_result['status']:
+            if m not in ['paid', 'timeouted']:
+                status_flag = False
+        if status_flag is True:
+            for mm in range(len(gmp_result['_id'])):
+                print(gmp_result['_id'][mm], gmp_result['status'][mm])
+
+
+def test_threading():
+    import concurrent.futures as futures
+    server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
+
+    with futures.ThreadPoolExecutor(1) as executor:
+        # api_result = []
+        #for i in server_api_ppoz:
+        api_result0 = executor.submit(server_api_ppoz[0].test_threading())
+        api_result1 = executor.submit(server_api_ppoz[1].test_threading())
+        futures.wait(api_result0, api_result1)
+        print(api_result0)
+    #     f1 = executor.submit(someClass.doSomething)
+    #     f2 = executor.submit(someClass.doSomethingElse)
+    #     futures.wait((f1, f2))
+    #     f3 = executor.submit(someClass.doSomethingElser, f1.result(), f2.result())
+    #     result = f3.result()
+    # server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
+    # # print(len(config.shard_ppoz_name))
+    # threads0 = threading.Thread(name=config.camunda_shard[0],
+    #                             target=server_api_ppoz[0].get_list_act_box_from_shard)
+    # threads1 = threading.Thread(name=config.camunda_shard[1],
+    #                             target=server_api_ppoz[1].get_list_act_box_from_shard)
+    # api_result0 = threads0.start()
+    # api_result1 = threads1.start()
+    # print("All threads are started")
+
+    # t = threading.Thread(target=BankAccount.execute_virement, args=(my_account, 5000, 'Customer %d' % (num_thread,)))
+    # t.start()
+
+
+
+
+
+
 
     # for bk_count in in_bk:
     #     bd_request = server_request.get_request(in_bk=bk_count)                     # сведения монго.реквест
@@ -300,11 +345,11 @@ def task05_not_ans_gmp_to_ppoz():
             # print(bd_gmp)
             # print(api_result)
 
-    try:
-        pass
-    finally:
-        server_request.client_close()
-        server_gmp.client_close()
+    # try:
+    #     pass
+    # finally:
+    #     server_request.client_close()
+    #     server_gmp.client_close()
 
 
   # if param_list['MongoDB_req'] == 'test':
