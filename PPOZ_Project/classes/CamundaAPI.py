@@ -375,3 +375,22 @@ class CamundaAPI(object):
                 return ret
         req_get_data.close()  # Закрываем сессию
         self.logger.put_msg(f'Class: {__name__}.{self.get_cur_inst_time.__name__} close method', 'info')
+
+    def get_process_instance(self, in_bk):
+        """
+        Функция получения корневого инстанса по БК
+        :param in_bk:
+        :return:
+        """
+        self.logger.put_msg(f'Class: {__name__}.{self.get_process_instance.__name__} start method', 'info')
+        request_str = self.get_request_string('/process-instance?businessKey=' + in_bk)
+        req_get_data = self.session.get(request_str)
+        if req_get_data.status_code != 200:
+            exit('Server {} answer: {} {}'.format(self.serverName, req_get_data.status_code,
+                                                  req_get_data.content.decode('utf-8')))
+        else:
+            result = json.loads(req_get_data.content.decode('utf-8'))
+        req_get_data.close()  # Закрываем сессию
+        self.logger.put_msg(f'Class: {__name__}.{self.get_process_instance.__name__} close method', 'info')
+        return result
+

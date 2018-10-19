@@ -19,4 +19,5 @@ if __name__ == '__main__':
     # tasks.task05_not_ans_gmp_to_ppoz()
 
     # print(config.camunda['server'])
-    tasks.test_threading()
+    # tasks.test_threading()
+    tasks.test_get_instance()

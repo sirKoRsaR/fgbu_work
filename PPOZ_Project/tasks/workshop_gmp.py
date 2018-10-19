@@ -287,6 +287,17 @@ def test_threading():
         api_result1 = executor.submit(server_api_ppoz[1].test_threading())
         futures.wait(api_result0, api_result1)
         print(api_result0)
+
+
+def test_get_instance():
+    bk = ['PKPVDMFC-2018-10-16-070420', 'US-2018-08-14-125540', 'PKPVDMFC-2018-10-04-115340',
+          'PKPVDMFC-2018-09-21-093762', 'PKPVDMFC-2018-10-19-097194', 'PKPVDMFC-2018-10-18-138570']
+    server_api05 = CamundaAPI.CamundaAPI(config.camunda_shard[2])
+    print(server_api05.serverName)
+    for i in bk:
+        print(server_api05.get_process_instance(i))
+
+
     #     f1 = executor.submit(someClass.doSomething)
     #     f2 = executor.submit(someClass.doSomethingElse)
     #     futures.wait((f1, f2))
