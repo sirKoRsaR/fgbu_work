@@ -82,32 +82,43 @@ class MongoRequest(object):
             # print(item_result)
         print('Всего найдено ' + str(count_req) + ' обращений(я)')
 
-    def get_gmp_request(self, in_gmp):
+    def get_gmp_request(self, in_gmp=None, in_bk=None, in_projection=None):
         """
 
+        :param in_projection:
+        :param in_bk:
         :param in_gmp:
         :return:
         """
-        item_result = self.collection.find_one(
-            {
-                '_id': in_gmp
-
-            },
-            {
-                '_id': 1,
-                'status': 1,
-                'lastUpdated': 1,
-                'receivedDate': 1,
-                'expireDate': 1,
-                'billingInfo.gmpStatus': 1,
-                'billingInfo.gmpStatusDate': 1,
-                'billingInfo.charge.supplierBillID': 1,
-                'billingInfo.prepaidAmount': 1,
-                'billingInfo.amountToPay': 1,
-                'billingInfo.chargePaymentStatus': 1,
-                'billingInfo.extRequestIds': 1,
-                'subscriptions': 1
-            })
+        query = {}
+        projection = {}
+        sort = []
+        if in_projection is None:
+            projection = {
+                            '_id': 1,
+                            'status': 1,
+                            'lastUpdated': 1,
+                            'receivedDate': 1,
+                            'expireDate': 1,
+                            'billingInfo.gmpStatus': 1,
+                            'billingInfo.gmpStatusDate': 1,
+                            'billingInfo.chargePaymentStatus': 1,
+                            'billingInfo.prepaidAmount': 1,
+                            'billingInfo.chargedAmount': 1,
+                            'billingInfo.amountToPay': 1,
+                            'billingInfo.extRequestIds': 1,
+                            'billingInfo.charge.supplierBillID': 1,
+                            'billingInfo.charge.changeStatus': 1,
+                            'billingInfo.charge.amount': 1,
+                            'subscriptions': 1
+                        }
+        else:
+            projection = in_projection
+        if in_gmp is not None:
+            query = {'_id': in_gmp}
+        elif in_gmp is None and in_bk is not None:
+            query = {'billingInfo.extRequestIds': in_bk}
+        item_result = self.collection.find(query, projection=projection, sort=sort)
         return item_result
 
     def get_request(self, in_bk):
@@ -155,7 +166,7 @@ class MongoRequest(object):
         )
         return item_result
 
-    def get_query(self, in_query, in_projection=None):
+    def get_query(self, in_query=None, in_projection=None, in_limit=0):
         projection = {}
         if in_projection is None:
             projection = {
@@ -178,7 +189,7 @@ class MongoRequest(object):
         else:
             projection = in_projection
         sort = []
-        item_result = self.collection.find(in_query, projection=projection, sort=sort)
+        item_result = self.collection.find(in_query, projection=projection, sort=sort, limit=in_limit)
         return item_result
             # PKPVDMFC-2018-08-15-085750
 

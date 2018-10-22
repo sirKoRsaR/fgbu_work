@@ -3,6 +3,7 @@ import config
 import re
 import threading
 import classes.MongoRequest as MongoRequest
+import classes.RepairMethod as RepairMethod
 import classes.CamundaAPI as CamundaAPI
 import classes.LogForever as LogForever
 
@@ -203,7 +204,8 @@ def task04_get_instance_on_gmp():
 
 def task05_not_ans_gmp_to_ppoz():
     """
-
+    Получаем все обращения из ППОЗ со статусом awaitingPayment и добавляем коробки в ППОЗ,
+    инфу из Монги по gmpRequest
     :return:
     """
     in_bk = 'PKPVDMFC-2018-07-09-013075'
@@ -274,6 +276,21 @@ def task05_not_ans_gmp_to_ppoz():
         if status_flag is True:
             for mm in range(len(gmp_result['_id'])):
                 print(gmp_result['_id'][mm], gmp_result['status'][mm])
+
+
+def task_medicine_gmp_status():
+    task_runner = RepairMethod.RepairMethod()
+    server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
+
+    request_cur = server_request.get_query(in_query={'status': 'awaitingPayment', 'requestType': '111300001000'},
+                                           in_limit=1000)
+    keys_list = []
+    for bk in request_cur:
+        keys_list.append(bk['_id'])
+    # print(keys_list)
+    task_runner.medicine_gmp_status(in_bk=keys_list)
+
+
 
 
 def test_threading():

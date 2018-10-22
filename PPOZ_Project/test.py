@@ -1,30 +1,52 @@
+import stomp
 import json
+import time
+import logging
+import rest_api as rapi
 
-my_dict = {'box0': '{dfgdfv}'}
-array_temp = []
-array_temp2 = [array_temp]
+# broker = '10.128.229.30'
+broker = 'ppoz-bus-command-01.prod.egrn'
+port = 61613
+url = 'http://ppoz-gmp-process-01.prod.egrn:9080'
 
-my_array1 = [
-                {'instance': 'instance0', 'box': 'box0', 'id': 'id0'},
-                {'instance': 'instance1', 'box': 'box1', 'id': 'id1'},
-                {'instance': 'instance2', 'box': 'box2', 'id': 'id2'},
-                {'instance': 'instance3', 'box': 'box1', 'id': 'id3'}
-             ]
 
-ii = []
-my_dict = {}
-for i in my_array1:
-    ii3 = []
-    if i['box'] in ii:
-        print(str(i['box']) + ' in ii')
-        ii3 = my_dict[i['box']]
-        ii3.append(i)
-        my_dict[i['box']] = ii3
-    else:
-        ii.append(i['box'])
-        ii3.append(i)
-        my_dict[i['box']] = ii3
-print(my_dict)
-for tt, rr in my_dict.items():
-    print(tt + '\t' + str(rr))
+def sendMessage(brokerHost, brokerPort, destination, msg, aheaders):
+    conn = stomp.Connection([(brokerHost, brokerPort)], auto_content_length=False)
+    conn.start()
+    conn.connect()
+    tx = conn.begin()
+    headers = dict(aheaders)
+    headers['persistent'] = 'true'
+    conn.send(body=msg, destination=destination, headers=headers)
+    conn.commit(tx)
+    time.sleep(1)
+    conn.disconnect()
+    print('{} Ok'.format(msg))
+    logging.info('businessKey_send_to_mq_gmp: %s ' % (format(msg)))
 
+
+def main():
+    level = logging.INFO
+    logger = logging.getLogger(__name__)
+    logging.basicConfig(level=level, filename='send_to_mq_gmp_list_key_protocol.log')
+
+    if __name__ == '__main__':
+        file = open('gmp_BK_send.txt', 'r')
+        for key in file:
+            result_key_id = rapi.get_id(url, key.strip())
+            if result_key_id is None:
+                body = str(json.dumps({"businessKey": key.strip()}))
+                sendMessage(broker, port, '/queue/gmpBpmIn', body,
+                            {'command': 'ru.atc.rosreestr.cmd.StartProcessCommand'})
+            else:
+                logging.info('ID_camunda_bad: %s BK: %s' % (result_key_id, key))
+                result_cancel = rapi.cancel_id(url, result_key_id)
+                logging.info('BK: %s Result_cancel_pid_camunda: %s' % (key, result_cancel))
+                body = str(json.dumps({"businessKey": key.strip()}))
+                sendMessage(broker, port, '/queue/gmpBpmIn', body,
+                            {'command': 'ru.atc.rosreestr.cmd.StartProcessCommand'})
+
+        file.close()
+
+
+main()
