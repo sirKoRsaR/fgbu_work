@@ -14,8 +14,8 @@ if __name__ == '__main__':
 
     # tasks.task01_gmp_ppoz_compare
     # tasks.task02_gmp_error()
-    # tasks.task03_restart_inc_gmp()
-    # tasks.task04_get_instance_on_gmp()
+    tasks.task03_restart_inc_gmp()
+    tasks.task04_get_instance_on_gmp()
     # tasks.task05_not_ans_gmp_to_ppoz()
 
     # print(config.camunda['server'])
