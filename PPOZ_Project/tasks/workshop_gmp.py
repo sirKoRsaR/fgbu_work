@@ -292,7 +292,6 @@ def task_medicine_gmp_status():
 
 
 
-
 def test_threading():
     import concurrent.futures as futures
     server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]

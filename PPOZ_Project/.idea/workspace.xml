@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="">
+    <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="1">
+      <change beforePath="$PROJECT_DIR$/.idea/PPOZ_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PPOZ_Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/RepairMethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/RepairMethod.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/workshop_gmp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/workshop_gmp.py" afterDir="false" />
     </list>
+    <ignored path=".idea/" />
+    <ignored path="venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,7 @@
           <entry key="ipynb" value="2" />
           <entry key="py" value="42" />
           <entry key="sqlite3" value="1" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -37,6 +41,7 @@
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Python" value="42" />
           <entry key="SQL" value="1" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -44,14 +49,16 @@
           <entry key="Python Console" value="11" />
           <entry key="cfg" value="1" />
           <entry key="dummy" value="11" />
-          <entry key="py" value="30587" />
+          <entry key="py" value="30588" />
           <entry key="txt" value="520" />
+          <entry key="xml" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="532" />
-          <entry key="Python" value="30598" />
+          <entry key="Python" value="30599" />
+          <entry key="XML" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -106,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
                 <marker date="1539954583618" expanded="true" signature="1114:1240" ph="..." />
@@ -147,20 +154,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/workshop_gmp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="285" column="57" selection-start-line="285" selection-start-column="57" selection-end-line="285" selection-end-column="57" />
+            <state relative-caret-position="487">
+              <caret line="292" selection-start-line="292" selection-end-line="292" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <marker date="1540228283210" expanded="true" signature="7701:7702" ph="..." />
-                <marker date="1540228283210" expanded="true" signature="8735:8736" ph="..." />
-                <marker date="1540228283210" expanded="true" signature="11351:11352" ph="..." />
-                <marker date="1540228283210" expanded="true" signature="13929:14404" ph="..." />
-                <marker date="1540228283210" expanded="true" signature="15104:15281" ph="..." />
-                <marker date="1540228283210" expanded="true" signature="16080:16229" ph="..." />
+                <marker date="1540281910154" expanded="true" signature="7701:7702" ph="..." />
+                <marker date="1540281910154" expanded="true" signature="8735:8736" ph="..." />
+                <marker date="1540281910154" expanded="true" signature="11351:11352" ph="..." />
+                <marker date="1540281910154" expanded="true" signature="13929:14403" ph="..." />
+                <marker date="1540281910154" expanded="true" signature="15103:15280" ph="..." />
+                <marker date="1540281910154" expanded="true" signature="16079:16228" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="796">
+              <caret line="927" column="20" lean-forward="true" selection-start-line="927" selection-start-column="20" selection-end-line="927" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -179,18 +195,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="113">
               <caret line="54" column="33" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/ChatRoom.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -255,6 +259,7 @@
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/classes/RepairMethod.py" />
         <option value="$PROJECT_DIR$/tasks/workshop_gmp.py" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -299,6 +304,11 @@
             <path>
               <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -334,8 +344,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/venv" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -649,19 +659,26 @@
       <option name="project" value="LOCAL" />
       <updated>1540225510495</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="1">
+      <created>1540278616301</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1540278616301</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="266" y="1" width="1621" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25521162" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25521162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8194444" visible="true" weight="0.21606949" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8194444" visible="true" weight="0.21606949" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993598" weight="0.3995657" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -867,7 +884,7 @@
     <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
             <marker date="1539954583618" expanded="true" signature="1114:1240" ph="..." />
@@ -905,17 +922,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tasks/workshop_gmp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="285" column="57" selection-start-line="285" selection-start-column="57" selection-end-line="285" selection-end-column="57" />
+        <state relative-caret-position="487">
+          <caret line="292" selection-start-line="292" selection-end-line="292" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-            <marker date="1540228283210" expanded="true" signature="7701:7702" ph="..." />
-            <marker date="1540228283210" expanded="true" signature="8735:8736" ph="..." />
-            <marker date="1540228283210" expanded="true" signature="11351:11352" ph="..." />
-            <marker date="1540228283210" expanded="true" signature="13929:14404" ph="..." />
-            <marker date="1540228283210" expanded="true" signature="15104:15281" ph="..." />
-            <marker date="1540228283210" expanded="true" signature="16080:16229" ph="..." />
+            <marker date="1540281910154" expanded="true" signature="7701:7702" ph="..." />
+            <marker date="1540281910154" expanded="true" signature="8735:8736" ph="..." />
+            <marker date="1540281910154" expanded="true" signature="11351:11352" ph="..." />
+            <marker date="1540281910154" expanded="true" signature="13929:14403" ph="..." />
+            <marker date="1540281910154" expanded="true" signature="15103:15280" ph="..." />
+            <marker date="1540281910154" expanded="true" signature="16079:16228" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="796">
+          <caret line="927" column="20" lean-forward="true" selection-start-line="927" selection-start-column="20" selection-end-line="927" selection-end-column="20" />
         </state>
       </provider>
     </entry>
