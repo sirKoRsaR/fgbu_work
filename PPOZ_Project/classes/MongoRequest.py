@@ -100,6 +100,7 @@ class MongoRequest(object):
                             'lastUpdated': 1,
                             'receivedDate': 1,
                             'expireDate': 1,
+                            'billingInfo._id': 1,
                             'billingInfo.gmpStatus': 1,
                             'billingInfo.gmpStatusDate': 1,
                             'billingInfo.chargePaymentStatus': 1,

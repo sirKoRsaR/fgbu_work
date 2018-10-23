@@ -20,17 +20,19 @@ class LogForever(object):
             pass
         self.log_worker.addHandler(log_writer)
 
-    def put_msg(self, in_text, in_type='info') -> object:
-        if in_type == 'info':
+    def put_msg(self, in_text, typet='info') -> object:
+        if typet == 'info':
             self.log_worker.info(in_text)
-        elif in_type == 'debug':
+        elif typet == 'debug':
             self.log_worker.debug(in_text)
-        elif in_type == 'warning':
+        elif typet == 'warning':
             self.log_worker.warning(in_text)
-        elif in_type == 'error':
+        elif typet == 'error':
             self.log_worker.error(in_text)
-        elif in_type == 'critical':
+        elif typet == 'critical':
             self.log_worker.critical(in_text)
+        elif typet == 'scr':
+            print(in_text)
 
 # logger = logging.Logger(name)
 #    logger.setLevel(logging.DEBUG)

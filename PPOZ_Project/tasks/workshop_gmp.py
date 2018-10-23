@@ -283,12 +283,19 @@ def task_medicine_gmp_status():
     server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
 
     request_cur = server_request.get_query(in_query={'status': 'awaitingPayment', 'requestType': '111300001000'},
-                                           in_limit=100000)
+                                           in_limit=1000)
+    # keys_list = ['PKPVDMFC-2018-08-16-017188', 'PKPVDMFC-2018-08-16-010828', 'PKPVDMFC-2018-08-16-009927',
+    #              'PKPVDMFC-2018-08-16-009903', 'PKPVDMFC-2018-08-15-016541', 'PKPVDMFC-2018-08-15-011969',
+    #              'PKPVDMFC-2018-08-15-010042', 'PKPVDMFC-2018-08-15-007226', 'PKPVDMFC-2018-08-15-006824',
+    #              'PKPVDMFC-2018-08-15-006805', 'PKPVDMFC-2018-08-15-006448']
     keys_list = []
     for bk in request_cur:
         keys_list.append(bk['_id'])
-    # print(keys_list)
     task_runner.medicine_gmp_status(in_bk=keys_list)
+    try:
+        pass
+    finally:
+        server_request.client_close()
 
 
 
