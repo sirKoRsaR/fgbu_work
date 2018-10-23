@@ -283,7 +283,7 @@ def task_medicine_gmp_status():
     server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
 
     request_cur = server_request.get_query(in_query={'status': 'awaitingPayment', 'requestType': '111300001000'},
-                                           in_limit=1000)
+                                           in_limit=100000)
     keys_list = []
     for bk in request_cur:
         keys_list.append(bk['_id'])

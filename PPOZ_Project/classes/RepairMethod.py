@@ -64,12 +64,20 @@ class RepairMethod(object):
                 elif j['status'] != 'paid':
                     flag_gmp = False
             if flag_gmp is True and flag_status is True:
-                result_list.put_msg(f"{req_result['_id']}\tgmp_ids:{gmp_ids}\t"
+                result_list.put_msg(f"{req_result.get('_id')}\t"
+                                    f"packagePaymentExpiresDate:{req_result.get('packagePaymentExpiresDate')}\t"
+                                    f"gmp_ids:{gmp_ids}\t"
                                     f"charged_amount:{charged_amount}\tpay_amount:{pay_amount}\t"
                                     f"charge_gmp_status:{charge_gmp_status}\tflag_status:{flag_status}\t"
-                                    f"flag_gmp:{flag_gmp}")
+                                    f"flag_gmp:{flag_gmp}\t"
+                                    f"status:{req_result.get('status')}\t"
+                                    f"state:{req_result.get('state')}")
             elif flag_gmp is False:
-                result_error.put_msg(f"{req_result['_id']}\tgmp_ids:{gmp_ids}\t"
-                                     f"charged_amount:{charged_amount}\tpay_amount:{pay_amount}\t"
-                                     f"charge_gmp_status:{charge_gmp_status}\tflag_status:{flag_status}\t"
-                                     f"flag_gmp:{flag_gmp}")
+                result_error.put_msg(f"{req_result.get('_id')}\t"
+                                    f"packagePaymentExpiresDate:{req_result.get('packagePaymentExpiresDate')}\t"
+                                    f"gmp_ids:{gmp_ids}\t"
+                                    f"charged_amount:{charged_amount}\tpay_amount:{pay_amount}\t"
+                                    f"charge_gmp_status:{charge_gmp_status}\tflag_status:{flag_status}\t"
+                                    f"flag_gmp:{flag_gmp}\t"
+                                    f"status:{req_result.get('status')}\t"
+                                    f"state:{req_result.get('state')}")

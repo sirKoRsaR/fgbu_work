@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/RepairMethod.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/MongoRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/MongoRequest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/RepairMethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/RepairMethod.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/workshop_gmp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/workshop_gmp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,14 +44,14 @@
           <entry key="Python Console" value="11" />
           <entry key="cfg" value="1" />
           <entry key="dummy" value="11" />
-          <entry key="py" value="30540" />
+          <entry key="py" value="30587" />
           <entry key="txt" value="520" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="532" />
-          <entry key="Python" value="30551" />
+          <entry key="Python" value="30598" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -110,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="396" selection-start-line="396" selection-end-line="396" />
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
                 <marker date="1539954583618" expanded="true" signature="1114:1240" ph="..." />
@@ -127,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
+            <state relative-caret-position="385">
+              <caret line="142" column="42" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="42" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <marker date="1540224570298" expanded="true" signature="1143:1243" ph="..." />
@@ -142,11 +137,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/RepairMethod.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="55" column="36" lean-forward="true" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+            <state relative-caret-position="640">
+              <caret line="82" column="71" selection-start-line="82" selection-start-column="71" selection-end-line="82" selection-end-column="71" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1540223992676" expanded="true" signature="127:128" ph="..." />
+                <marker date="1540228283129" expanded="true" signature="127:128" ph="..." />
               </folding>
             </state>
           </provider>
@@ -155,16 +150,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tasks/workshop_gmp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="273" column="46" lean-forward="true" selection-start-line="273" selection-start-column="46" selection-end-line="273" selection-end-column="46" />
+            <state relative-caret-position="368">
+              <caret line="285" column="57" selection-start-line="285" selection-start-column="57" selection-end-line="285" selection-end-column="57" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <marker date="1540225326910" expanded="true" signature="7701:7702" ph="..." />
-                <marker date="1540225326910" expanded="true" signature="8735:8736" ph="..." />
-                <marker date="1540225326910" expanded="true" signature="11351:11352" ph="..." />
-                <marker date="1540225326910" expanded="true" signature="13929:14402" ph="..." />
-                <marker date="1540225326910" expanded="true" signature="15102:15279" ph="..." />
-                <marker date="1540225326910" expanded="true" signature="16078:16227" ph="..." />
+                <marker date="1540228283210" expanded="true" signature="7701:7702" ph="..." />
+                <marker date="1540228283210" expanded="true" signature="8735:8736" ph="..." />
+                <marker date="1540228283210" expanded="true" signature="11351:11352" ph="..." />
+                <marker date="1540228283210" expanded="true" signature="13929:14404" ph="..." />
+                <marker date="1540228283210" expanded="true" signature="15104:15281" ph="..." />
+                <marker date="1540228283210" expanded="true" signature="16080:16229" ph="..." />
               </folding>
             </state>
           </provider>
@@ -255,10 +250,10 @@
         <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/start_process.py" />
-        <option value="$PROJECT_DIR$/classes/RepairMethod.py" />
         <option value="$PROJECT_DIR$/classes/MongoRequest.py" />
         <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/classes/RepairMethod.py" />
         <option value="$PROJECT_DIR$/tasks/workshop_gmp.py" />
       </list>
     </option>
@@ -266,7 +261,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="266" />
     <option name="y" value="1" />
-    <option name="width" value="1622" />
+    <option name="width" value="1621" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -311,6 +306,11 @@
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="tasks" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
+            <path>
+              <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="venv" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -335,7 +335,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -642,14 +642,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539959712197</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="1">
+      <created>1540225510495</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1540225510495</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="266" y="1" width="1622" height="1055" extended-state="0" />
+    <frame x="266" y="1" width="1621" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2550505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25521162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -816,21 +823,6 @@
     <entry file="file://$PROJECT_DIR$/Site/db.sqlite3">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="396" selection-start-line="396" selection-end-line="396" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1539954583618" expanded="true" signature="1114:1240" ph="..." />
-            <marker date="1539954583618" expanded="true" signature="1278:1283" ph="..." />
-            <marker date="1539954583618" expanded="true" signature="3324:4493" ph="..." />
-            <marker date="1539954583618" expanded="true" signature="6671:6675" ph="..." />
-            <marker date="1539954583618" expanded="true" signature="14861:14865" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -841,43 +833,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/RepairMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="55" column="36" lean-forward="true" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <marker date="1540223992676" expanded="true" signature="127:128" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1540224570298" expanded="true" signature="1143:1243" ph="..." />
-            <marker date="1540224570298" expanded="true" signature="1764:1769" ph="..." />
-            <marker date="1540224570298" expanded="true" signature="6243:7323" ph="..." />
           </folding>
         </state>
       </provider>
@@ -896,18 +857,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/start_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1539954583618" expanded="true" signature="1114:1240" ph="..." />
+            <marker date="1539954583618" expanded="true" signature="1278:1283" ph="..." />
+            <marker date="1539954583618" expanded="true" signature="3324:4493" ph="..." />
+            <marker date="1539954583618" expanded="true" signature="6671:6675" ph="..." />
+            <marker date="1539954583618" expanded="true" signature="14861:14865" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="142" column="42" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1540224570298" expanded="true" signature="1143:1243" ph="..." />
+            <marker date="1540224570298" expanded="true" signature="1764:1769" ph="..." />
+            <marker date="1540224570298" expanded="true" signature="6243:7323" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/RepairMethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="82" column="71" selection-start-line="82" selection-start-column="71" selection-end-line="82" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1540228283129" expanded="true" signature="127:128" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tasks/workshop_gmp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="273" column="46" lean-forward="true" selection-start-line="273" selection-start-column="46" selection-end-line="273" selection-end-column="46" />
+        <state relative-caret-position="368">
+          <caret line="285" column="57" selection-start-line="285" selection-start-column="57" selection-end-line="285" selection-end-column="57" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-            <marker date="1540225326910" expanded="true" signature="7701:7702" ph="..." />
-            <marker date="1540225326910" expanded="true" signature="8735:8736" ph="..." />
-            <marker date="1540225326910" expanded="true" signature="11351:11352" ph="..." />
-            <marker date="1540225326910" expanded="true" signature="13929:14402" ph="..." />
-            <marker date="1540225326910" expanded="true" signature="15102:15279" ph="..." />
-            <marker date="1540225326910" expanded="true" signature="16078:16227" ph="..." />
+            <marker date="1540228283210" expanded="true" signature="7701:7702" ph="..." />
+            <marker date="1540228283210" expanded="true" signature="8735:8736" ph="..." />
+            <marker date="1540228283210" expanded="true" signature="11351:11352" ph="..." />
+            <marker date="1540228283210" expanded="true" signature="13929:14404" ph="..." />
+            <marker date="1540228283210" expanded="true" signature="15104:15281" ph="..." />
+            <marker date="1540228283210" expanded="true" signature="16080:16229" ph="..." />
           </folding>
         </state>
       </provider>
