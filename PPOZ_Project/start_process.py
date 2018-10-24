@@ -1,7 +1,3 @@
-import classes.ChatRoom as ChatRoom
-import config
-import classes.MongoRequest as MongoRequest
-import classes.CamundaAPI as CamundaAPI
 import sys
 import tasks.workshop_gmp as tasks
 import classes.LogForever as LogForever
@@ -24,4 +20,4 @@ if __name__ == '__main__':
 
     # tasks.test_threading()
 
-    tasks.task_medicine_gmp_status()
+    tasks.task_repair_gmp_status()

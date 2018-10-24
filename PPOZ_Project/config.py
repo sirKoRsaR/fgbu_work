@@ -35,6 +35,8 @@ camunda = {'ppoz_name': [i for i in shard_ppoz_name],
 
 mongodb_conn = ['mongodb://support:support@ppoz-mongos-request-07.prod.egrn:27017']
 post_arm_gmp = 'http://ppoz-gmp-bal-01.prod.egrn:9003/rest/tech/resendstatus'
+broker_mq = {'url': 'ppoz-bus-command-01.prod.egrn', 'port': 61613}
+
 
 param_list = {'MongoDB_req': ''}
 

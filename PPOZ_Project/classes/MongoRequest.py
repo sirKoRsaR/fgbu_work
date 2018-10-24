@@ -167,9 +167,8 @@ class MongoRequest(object):
         )
         return item_result
 
-    def get_query(self, in_query=None, in_projection=None, in_limit=0):
-        projection = {}
-        if in_projection is None:
+    def get_query(self, query=None, projection=None, limit=0):
+        if projection is None:
             projection = {
                             '_id': 1,
                             'region': 1,
@@ -187,10 +186,8 @@ class MongoRequest(object):
                             'awaitingPaymentCancel': 1,
                             'bpmNodeId.PPOZ': 1
                         }
-        else:
-            projection = in_projection
         sort = []
-        item_result = self.collection.find(in_query, projection=projection, sort=sort, limit=in_limit)
+        item_result = self.collection.find(query, projection=projection, sort=sort, limit=limit)
         return item_result
             # PKPVDMFC-2018-08-15-085750
 

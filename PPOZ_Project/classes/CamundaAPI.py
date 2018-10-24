@@ -49,6 +49,73 @@ class CamundaAPI(object):
         api_result = json.loads(req_get_data.content.decode('utf-8'))
         return api_result
 
+    def get_box(self, iid):
+        """
+        Функция принимает айди процесса и возвращает название коробки на которой находится процес
+        :param uri: Юрл камунды + порт
+        :param iid: айди процесса
+        :return: список содержащий названия коробок
+        """
+        self.logger.put_msg(f'Class: {__name__}.{self.get_box.__name__} start method', 'info')
+        def get(g):
+            gt = []
+            if not g:
+                return None
+            if g['childActivityInstances']:
+                for t in g['childActivityInstances']:
+                    gt.append(get(t))
+                return gt
+            else:
+                gt.append([g['activityId'], g['activityName'], g['activityType'], g['processInstanceId']])
+                return gt
+
+        request_str = self.get_request_string
+        request_str = request_str + '/process-instance/' + iid + '/activity-instances'  # Собираем строку запроса
+        r = self.session.get(request_str)
+        ret = []
+        if r.status_code != 200:  # Если запрос не успешен
+            if r.status_code == 404:  # Если искомый айди не найден то просто грохаем http сессию (иначе сожрем ресурсы
+                # и начнем сыпать тонной ошибок)
+                self.logger.put_msg('Коробка для процесса' + iid + 'не найдена')
+                r.close()  # Закрываем сессию
+            else:
+                # print('From get_box     Server {} answer: {} {}'.format(uri, r.status_code, r.content.decode('utf-8')))
+                self.logger.put_msg('\tServer {} answer: {} {}'.format(self.serverName,
+                                                                       r.status_code,
+                                                                       r.content.decode('utf-8'))),
+                r.close()  # Закрываем сессию
+        else:
+            result = json.loads(r.content.decode('utf-8'))  # Забираем данные в JSON
+            for reslt in get(result):
+                if len(reslt) == 1:
+                    # print('reslt = ' + str(reslt))
+                    while len(reslt) == 1:  # Уходим в саммую глубь коробок
+                        reslt = reslt[0]
+                    aid, aidname, atype, pid = reslt
+                    ret.append([aid, aidname, atype, pid])
+                    # if len(reslt[0]) == 1:
+                    #     print('reslt[0] = ' + str(reslt[0]))
+                    #     aid, aidname, atype, pid = reslt[0][0]
+                    #     ret.append([aid, aidname, atype, pid])
+                    # else:
+                    #     aid, aidname, atype, pid = reslt[0]
+                    #     ret.append([aid, aidname, atype, pid])
+                elif len(reslt) == 4:
+                    aid, aidname, atype, pid = reslt
+                    ret.append([aid, aidname, atype, pid])
+            # print(ret)
+            r.close()  # Закрываем сессию
+            self.logger.put_msg(f'Class: {__name__}.{self.get_box.__name__} close method', 'info')
+            if len(ret) == 1:
+                return ret
+            else:
+                return ret
+            # pri = result['childActivityInstances']  # Из результата забираем только дочерние коробки
+            # if pri:  # Если есть дочерние коробки
+            #     for a in pri:  # Разбираем каждую
+            #         ret.append(a['activityId'])  # Забираем только айди коробки
+            #         r.close()  # Закрываем сессию
+            #         return ret[0]
 
     @staticmethod
     def get_json_element(in_json, in_find_element):
