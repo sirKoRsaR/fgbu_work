@@ -16,7 +16,7 @@ class RepairMethod(object):
         :param in_file:
         :return:
         """
-
+        check_plus = ['OK_PRE', 'OK_0', 'OK']
         # in_bk = ['PKPVDMFC-2018-08-10-017885']
 
         def collector_amount(in_gmp):
@@ -48,13 +48,19 @@ class RepairMethod(object):
                         if billing.get('charge').get('amount') == 0:
                             decision_billing['result'][count] = 'OK_0'
                             # импорт начислений, но сумма 0 - ОК
-                        elif billing.get('charge').get('amount') != 0:
+                        elif billing.get('charge').get('amount') == billing.get('prepaidAmount'):
+                            decision_billing['result'][count] = 'OK_PRE'
+                            # импорт начислений, но сумма не 0 и равна предопдате
+                        else:
                             decision_billing['result'][count] = '?'
-                            # импорт начислений, но сумма не 0 - ??
+                            # импорт начислений, но сумма не 0 и нет предопдаты - ??
                     elif billing.get('gmpStatus') in ['chargeCanceled']:
                         if billing.get('charge').get('amount') == 0:
                             decision_billing['result'][count] = 'OK_0'
                             # Истек срок ожидания, но сумма 0
+                        elif billing.get('charge').get('amount') == billing.get('prepaidAmount'):
+                            decision_billing['result'][count] = 'OK_PRE'
+                            # импорт начислений, но сумма не 0 и равна предопдате
                         elif billing.get('charge').get('amount') != 0:
                             decision_billing['result'][count] = 'restart'  # ????
                             # Истек срок ожидания и сумма НЕ 0
@@ -102,6 +108,7 @@ class RepairMethod(object):
         else:
             pass  # исключения
         # charged_amount_bk =[]
+        count_list = 0
         for i in bk_list:  # список БК
             req_result = server_request.get_request(i)
             # print(req_result)
@@ -111,8 +118,15 @@ class RepairMethod(object):
                 continue
             gmp_result = server_gmp.get_gmp_request(in_bk=req_result['_id'])
             result_coll = collector_amount(gmp_result)
-            print(i, result_coll)
-
+            flag_result = True
+            for z in result_coll.get('billing'):            # если по оплате все удовлетворяет условиям
+                if all(elem in check_plus for elem in z.get('result', 'None')) is not True:
+                    flag_result = False
+            if flag_result is True:
+                result_list.put_msg(f"{i}\tflag:{flag_result}\t"
+                                    f"{result_coll}")
+            count_list += 1
+            print(count_list, i, flag_result, result_coll)
         try:
             pass
         finally:
