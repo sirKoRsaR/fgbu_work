@@ -8,7 +8,8 @@ if __name__ == '__main__':
     # logger = LogForever.LogForever('project')
     # ChatRoom.get_initial_param(config.param_list)
 
-    # tasks.task01_gmp_ppoz_compare
+    tasks.task01_gmp_ppoz_compare()
+
     # tasks.task02_gmp_error()
     # tasks.task03_restart_inc_gmp()
     # tasks.task04_get_instance_on_gmp()
@@ -20,4 +21,4 @@ if __name__ == '__main__':
 
     # tasks.test_threading()
 
-    tasks.task_repair_gmp_status()
+    # tasks.task_repair_gmp_status()

@@ -9,88 +9,34 @@ import classes.LogForever as LogForever
 
 
 def task01_gmp_ppoz_compare():
-    delta = datetime.today() - timedelta(days=7)
-    result_list = LogForever.LogForever(task01_gmp_ppoz_compare.__name__, 'i')  # Инициализация записи результата в лог
-    result_error = LogForever.LogForever(task01_gmp_ppoz_compare.__name__ + '_error', 'i')
-    server_api_gmp = CamundaAPI.CamundaAPI(config.camunda_gmp)                  # Инициализация камунды ГМП
-    server_mongo_gmp = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')         # Инициализация монги
-    server_mongo_request = MongoRequest.MongoRequest('rrpdb', 'requests')       # Инициализация монги
-    # server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]  # Инициализация камунд ППОЗ
-
-    spisok_gmp_box = ['timerPaymentStatusRetry',                                # Таймер проверки оплаты
-                      'taskCheckPaymentStatus'                                  # Проверка оплаты
-                      ]
-                    #['ServiceTask_0iavb3s']
-    result_list.put_msg(f"##########################################################################\n"
-                        f"Обращения, у которых есть коробка в Api GMP,но статус в Mongo - processed \n"
-                        f"и срок продления ожидания expireDate истек недлю назад\n "
-                        f"##########################################################################\n"
-                        f"GMP_id\tbusinessKey\tInstanse_Camunda_API\tGMP_BOX\texpireDate")
-    api_result = server_api_gmp.get_activity_process(['ServiceTask_0iavb3s'], return_type='json', in_variables=None)
-    for i in api_result:                    # Считываем каждую коробку, получаем список словарей (json) api_result[i]
-        for j in api_result[i]:             # считываем каждый json в коробке, получаем словарь (json) j
-            mongo_gmp = server_mongo_gmp.get_gmp_request(j['businessKey'])
-            # j.update(temp)                  # вставили в словарь
-            try:
-                mongo_gmp['billingInfo'][0]['extRequestIds'][0]
-            except IndexError:
-                result_error.put_msg(f"Error: не найден billingInfo.extRequestIds для {mongo_gmp['_id']}\t"
-                                     f"{j['id']}")
-                continue
-            mongo_req = server_mongo_request.get_request(mongo_gmp['billingInfo'][0]['extRequestIds'][0])
-            # print(mongo_req['_id'], mongo_req['bpmNodeId']['PPOZ'])
-            try:
-                mongo_req['_id']
-            except TypeError:
-                result_error.put_msg(f"Error: не найден requests для {mongo_gmp['_id']}")
-                continue
-            try:
-                mongo_gmp['status']
-            except TypeError:
-                result_error.put_msg(f"Error: не найден status в gmpRequest для {mongo_gmp['_id']}")
-                continue
-            try:
-                mongo_req['status']
-            except TypeError:
-                result_error.put_msg(f"Error: не найден status в requests для {mongo_req['_id']}")
-                continue
-            if mongo_req['status'] == 'processed' and mongo_gmp['status'] == 'awaitingPayment':
-                   # and mongo_gmp['expireDate'] < delta:
-                # В апи гмп висит а обращение завершено и срок истек неделю назад
-                result_list.put_msg(f"{mongo_gmp['_id']}\t{mongo_req['_id']}\t{j['id']}\t{i}\t"
-                                    f"{mongo_gmp['expireDate']}")
-                #print(mongo_req['_id'])
-            j['MongoDB_gmp'] = mongo_gmp  # вставили в словарь с новым key
-            j['MongoDB_request'] = mongo_gmp
-
-        # print(api_result[i])
-
-    # result_list.put_msg(f"'gmp_pid'\t'businessKey_gmp'\t"
-    #                     f"'BK_id'\t"
-    #                     f"'region'\t"
-    #                     f"'status_request'\t"
-    #                     f"'receivedDate'\t"
-    #                     f"'expireDate'\t"
-    #                     f"'gmpStatus'\t'"
-    #                     f"'status'\t"
-    #                     f"'supplierBillID'\t"
-    #                     f"'Shard'\t")
-    # for ii in api_result:
-    #     for jj in api_result[ii]:
-    #         result_list.put_msg(f"{jj['id']}\t{jj['businessKey']}\t"
-    #                             f"{jj['MongoDB_request']['_id']}\t"
-    #                             f"{jj['MongoDB_request']['region']}\t"
-    #                             f"{jj['MongoDB_request']['status']}\t"
-    #                             f"{jj['MongoDB_gmp']['receivedDate']}\t"
-    #                             f"{jj['MongoDB_gmp']['expireDate']}\t"
-    #                             f"{jj['MongoDB_gmp']['status']}\t"
-    #                             f"{jj['MongoDB_gmp']['billingInfo'][0]['gmpStatus']}\t"
-    #                             f"{jj['MongoDB_gmp']['billingInfo'][0]['charge']['supplierBillID']}\t"
-    #                             f"{jj['MongoDB_request']['bpmNodeId']['PPOZ']}\t")
+    server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
+    server_gmp = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')
+    query1 = {'state': {'$exists': False},
+              'status': {'$in': ['awaitingPayment', 'timeouted']},
+              'lastModifiedAt': {'$lte': datetime(2018, 10, 10, 00, 00)},
+              'lastModifiedAt': {'$gte': datetime(2018, 1, 1, 00, 00)}}
+    query2 = {'_id': 'PKPVDMFC-2018-08-16-017188'}
+    request_cur = server_request.get_query(query=query1, limit=20000)
+    print('begin')
+    for i in request_cur:
+        key_gmp = i.get('gmpServiceRequestNumber', None)
+        if key_gmp is not None:
+            gmp_result1 = server_gmp.get_gmp_request(in_gmp=key_gmp)
+            #gmp_result2 = server_gmp.get_gmp_request(in_bk=i.get('_id'))
+            if gmp_result1.count() == 0:
+                print(f"YES {i.get('_id')} {i.get('gmpServiceRequestNumber')} None")
+            else:
+                # for j in gmp_result1:
+                #     print(f"NO {i.get('_id')} {i.get('gmpServiceRequestNumber')} {j.get('_id')}")
+                pass
+        else:
+            #print(f"NO  {i.get('_id')} {i.get('gmpServiceRequestNumber')} None")
+            pass
     try:
-        pass
+            pass
     finally:
-        server_mongo_gmp.client_close()
+        server_gmp.client_close()
+        server_request.client_close()
 
 def task02_gmp_error():
     """
@@ -161,148 +107,10 @@ def task03_restart_inc_gmp():
             #     server_api_gmp.restart_box(box, i['processInstanceId'])
 
 
-def task04_get_instance_on_gmp():
-    """
-
-    :return:
-    """
-    result_list = LogForever.LogForever(task04_get_instance_on_gmp.__name__, 'i')
-    result_error = LogForever.LogForever(task04_get_instance_on_gmp.__name__ + '_error', 'i')
-
-    server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]      # Инициализация камунд ППОЗ
-    server_mongo_request = MongoRequest.MongoRequest('rrpdb', 'requests')           # Инициализация монги
-    api_result = {}
-    for server_ppoz in server_api_ppoz:             # сервера
-        api_result[server_ppoz] = server_ppoz.get_activity_process(in_activity=['call_ppoz_gmp'], return_type='count')
-        # print(api_result[server_ppoz])
-        for i in api_result[server_ppoz]:           # коробки
-            for j in api_result[server_ppoz][i]:    # json's
-                try:
-                    j.get('businessKey')
-                except AttributeError:
-                    result_error.put_msg(f"{j}")
-                    continue
-                mongo_requests = server_mongo_request.get_request(j['businessKey'])
-                try:
-                    mongo_requests.get
-                except AttributeError:
-                    result_error.put_msg(f"{j}")
-                    continue
-                result_list.put_msg(f"businessKey:{mongo_requests.get('_id', None)}\t"
-                                    f"region:{mongo_requests.get('region', None)}\t"
-                                    f"status:{mongo_requests.get('status', None)}\t"
-                                    f"state:{mongo_requests.get('state', None)}\t"
-                                    f"instance:{j.get('id', None)}")
-                j['MongoDB_requests'] = mongo_requests
-        # print(f"{config.camunda_shard[server_ppoz]}: {api_result}")
-
-    try:
-        pass
-    finally:
-        server_mongo_request.client_close()
-
-
-def task05_not_ans_gmp_to_ppoz():
-    """
-    Получаем все обращения из ППОЗ со статусом awaitingPayment и добавляем коробки в ППОЗ,
-    инфу из Монги по gmpRequest
-    :return:
-    """
-    in_bk = 'PKPVDMFC-2018-07-09-013075'
-    gmp_projection = {
-                '_id': 1,
-                'status': 1,
-                'lastUpdated': 1,
-                'receivedDate': 1,
-                'expireDate': 1,
-                'billingInfo.gmpStatus': 1,
-                'billingInfo.gmpStatusDate': 1,
-                'billingInfo.charge.supplierBillID': 1,
-                'billingInfo.prepaidAmount': 1,
-                'billingInfo.amountToPay': 1,
-                'billingInfo.chargePaymentStatus': 1,
-                'billingInfo.extRequestIds': 1,
-                'subscriptions': 1
-            }
-
-    result_list = LogForever.LogForever(task05_not_ans_gmp_to_ppoz.__name__, 'i')
-    result_error = LogForever.LogForever(task05_not_ans_gmp_to_ppoz.__name__ + '_error', 'i')
-    server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]  # Инициализация камунд ППОЗ
-    server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
-    server_gmp = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')
-
-    status_request = server_request.get_query({"status": "awaitingPayment"})
-    for i in status_request:
-        # print(i)
-        try:
-            i['_id']
-        except KeyError:
-            result_error.put_msg(f"None BK")
-            continue
-        if i.get('status') is None:
-            result_error.put_msg(f"BK:{i.get('_id')}\tStatus:None\tgmpRequest:None")
-            continue
-        shard_index = config.shard_ppoz_name.index(i['bpmNodeId']['PPOZ'])
-        api_result = server_api_ppoz[shard_index].get_box_api(i['_id'])
-        box_ids = []
-        for j in api_result:
-            box_ids.append(j['definitionId'])
-        box_names = server_api_ppoz[shard_index].get_box_by_definition_id(box_ids)
-        status_gmp = server_gmp.get_query({'billingInfo.extRequestIds': i['_id']}, gmp_projection)
-        gmp_result = {'_id': [], 'receivedDate': [], 'expireDate': [], 'status': [], 'billingInfo': [],
-                      'lastUpdated': []}
-        for n in status_gmp:
-            gmp_result['_id'].append(n['_id'])
-            gmp_result['status'].append(n['status'])
-            gmp_result['receivedDate'].append(n['receivedDate'])
-            gmp_result['expireDate'].append(n['expireDate'])
-            gmp_result['billingInfo'].append(n['billingInfo'])
-            try:
-                gmp_result['lastUpdated'].append(n['lastUpdated'])
-            except KeyError:
-                pass
-        if status_gmp is None:
-            result_error.put_msg(f"BK:{i['_id']}\tStatus:{i['status']}\tgmpRequest:{i['gmpServiceRequestNumber']}\tNone")
-            continue
-        result_list.put_msg(f"BK:{i['_id']}\tStatus:{i['status']}\tgmpRequest:{gmp_result['_id']}\t"
-                            f"State:{i.get('state')}\trequestType:{i.get('requestType')}\t"
-                            f"Status_gmp:{gmp_result['status']}\tOn_ppoz_box:{box_names}\t"
-                            f"lastUpdated:{gmp_result['lastUpdated']}")
-        status_flag = True
-        # print(gmp_result)
-        for m in gmp_result['status']:
-            if m not in ['paid', 'timeouted']:
-                status_flag = False
-        if status_flag is True:
-            for mm in range(len(gmp_result['_id'])):
-                print(gmp_result['_id'][mm], gmp_result['status'][mm])
-
-
 def task_repair_gmp_status():
     init = RepairMethod.RepairMethod()
     init.repair_gmp_status()
 
-
-def test_threading():
-    import concurrent.futures as futures
-    server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]
-
-    with futures.ThreadPoolExecutor(1) as executor:
-        # api_result = []
-        #for i in server_api_ppoz:
-        api_result0 = executor.submit(server_api_ppoz[0].test_threading())
-        api_result1 = executor.submit(server_api_ppoz[1].test_threading())
-        futures.wait(api_result0, api_result1)
-        print(api_result0)
-
-
-def test_get_instance():
-    bk = ['PKPVDMFC-2018-10-16-070420', 'US-2018-08-14-125540', 'PKPVDMFC-2018-10-04-115340',
-          'PKPVDMFC-2018-09-21-093762', 'PKPVDMFC-2018-10-19-097194', 'PKPVDMFC-2018-10-18-138570']
-    server_api05 = CamundaAPI.CamundaAPI(config.camunda_shard[2])
-    print(server_api05.serverName)
-    for i in bk:
-        print(server_api05.get_process_instance(i))
 
 
     #     f1 = executor.submit(someClass.doSomething)

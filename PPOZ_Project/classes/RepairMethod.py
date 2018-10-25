@@ -138,12 +138,14 @@ class RepairMethod(object):
         :return:
         """
         check_plus = ['OK_PRE', 'OK_0', 'OK']
+        result_list = LogForever.LogForever(self.repair_gmp_status.__name__, 'i')
+        result_error = LogForever.LogForever(self.repair_gmp_status.__name__ + '_error', 'i')
 
         key_list1 = ['PKPVDMFC-2018-08-16-017188', 'PKPVDMFC-2018-08-16-010828', 'PKPVDMFC-2018-08-16-009927',
                      'PKPVDMFC-2018-08-16-009903', 'PKPVDMFC-2018-08-15-016541', 'PKPVDMFC-2018-08-15-011969',
                      'PKPVDMFC-2018-08-15-010042', 'PKPVDMFC-2018-08-15-007226', 'PKPVDMFC-2018-08-15-006824',
                      'PKPVDMFC-2018-08-15-006805', 'PKPVDMFC-2018-08-15-006448']
-        key_list2 = ['PKPVDMFC-2018-08-15-006805']
+        key_list2 = ['PKPVDMFC-2018-08-16-017188']
         query1 = {'state': {'$exists': False},
                   'status': {'$in': ['awaitingPayment', 'timeouted']},
                   'lastModifiedAt': {'$lte': datetime(2018, 10, 10, 00, 00)},
@@ -153,8 +155,6 @@ class RepairMethod(object):
         server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
         request_cur = server_request.get_query(query=query2,
                                                limit=100)
-        result_list = LogForever.LogForever(self.repair_gmp_status.__name__, 'i')
-        result_error = LogForever.LogForever(self.repair_gmp_status.__name__ + '_error', 'i')
         # server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]  # Инициализация камунд ППОЗ
         server_gmp = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')
 
