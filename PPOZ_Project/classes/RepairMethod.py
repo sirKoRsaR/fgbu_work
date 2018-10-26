@@ -147,14 +147,15 @@ class RepairMethod(object):
                      'PKPVDMFC-2018-08-15-006805', 'PKPVDMFC-2018-08-15-006448']
         key_list2 = ['PKPVDMFC-2018-08-16-017188']
         query1 = {'state': {'$exists': False},
-                  'status': {'$in': ['awaitingPayment', 'timeouted']},
-                  'lastModifiedAt': {'$lte': datetime(2018, 10, 10, 00, 00)},
-                  'lastModifiedAt': {'$gte': datetime(2018, 1, 1, 00, 00)}}
+                  'status': {'$in': ['awaitingPayment', 'timeouted']}
+                  # 'lastModifiedAt': {'$lte': datetime(2018, 10, 26, 00, 00)},
+                  # 'lastModifiedAt': {'$gte': datetime(2018, 10, 10, 00, 00)}
+                  }
         query2 = {'_id': {'$in': key_list2}}
 
         server_request = MongoRequest.MongoRequest('rrpdb', 'requests')  # Инициализация монги
-        request_cur = server_request.get_query(query=query2,
-                                               limit=100)
+        request_cur = server_request.get_query(query=query1,
+                                               limit=100000)
         # server_api_ppoz = [CamundaAPI.CamundaAPI(i) for i in config.camunda_shard]  # Инициализация камунд ППОЗ
         server_gmp = MongoRequest.MongoRequest('rrgmp', 'gmpRequest')
 
@@ -169,36 +170,44 @@ class RepairMethod(object):
             gmp_result = server_gmp.get_gmp_request(in_bk=req_result['_id'])
             result_coll = self.collector_amount(gmp_result)                     # анализ запросов и начислений
             flag_result = True
+            # print(len(result_coll.get('_id')))
+            if len(result_coll.get('_id')) > 1:
+                if all(elem in ['paid'] for elem in result_coll.get('statusGmp')):
+                    result_list.put_msg(f"{i.get('_id')}\t{i.get('status')}\t"
+                                        f"{i.get('requestType')}\t"
+                                        f"{result_coll.get('_id')}\t"
+                                        f"{result_coll.get('statusGmp')}\t"
+                                        f"{result_coll.get('billing')}\t")
 
-            if all(elem in ['paid'] for elem in result_coll.get('statusGmp')):  # у всех запросов статус paid
-                shard_index = config.shard_ppoz_name.index(i['bpmNodeId']['PPOZ'])  # server ppoz api
-                for gmp_key in result_coll.get('_id'):
-                    ans = self.post_arm_gmp(gmp_key=gmp_key, status='paid')
-                    print(ans)
-                    if str(ans) == '500' and result_coll.get('subscriptions') is None:
-                        print('Пора добавлять subscriptions')
-                    elif str(ans) == '500' and result_coll.get('subscriptions'):
-                        pass
-            else:                                                               # НЕ у всех запросов статус paid
-                if i.get('requestType') == '111300001000' \
-                        and i.get('status') == 'awaitingPayment':               # заявление и статус
-                    for z in result_coll.get('billing'):            # если по оплате все удовлетворяет условиям
-                        if all(elem in check_plus for elem in z.get('result', 'None')) is True:
-                            pass
-                        else:
-                            flag_result = False
-                pass
+            # if all(elem in ['paid'] for elem in result_coll.get('statusGmp')):  # у всех запросов статус paid
+            #     shard_index = config.shard_ppoz_name.index(i['bpmNodeId']['PPOZ'])  # server ppoz api
+            #     for gmp_key in result_coll.get('_id'):
+            #         ans = self.post_arm_gmp(gmp_key=gmp_key, status='paid')
+            #         print(ans)
+            #         if str(ans) == '500' and result_coll.get('subscriptions') is None:
+            #             print('Пора добавлять subscriptions')
+            #         elif str(ans) == '500' and result_coll.get('subscriptions'):
+            #             pass
+            # else:                                                               # НЕ у всех запросов статус paid
+            #     if i.get('requestType') == '111300001000' \
+            #             and i.get('status') == 'awaitingPayment':               # заявление и статус
+            #         for z in result_coll.get('billing'):            # если по оплате все удовлетворяет условиям
+            #             if all(elem in check_plus for elem in z.get('result', 'None')) is True:
+            #                 pass
+            #             else:
+            #                 flag_result = False
+            #     pass
 
-            if flag_result is True:
-                result_list.put_msg(f"{i['_id']}\t{i['status']}\t"
-                                    f"{i['requestType']}\t"
-                                    f"flag:{flag_result}\t"
-                                    f"{result_coll}", 'scr')
-            else:
-                result_error.put_msg(f"{i['_id']}\t{i['status']}\t"
-                                     f"{i['requestType']}\t"
-                                     f"flag:{flag_result}\t"
-                                     f"{result_coll}", 'scr')
+            # if flag_result is True:
+            #     result_list.put_msg(f"{i['_id']}\t{i['status']}\t"
+            #                         f"{i['requestType']}\t"
+            #                         f"flag:{flag_result}\t"
+            #                         f"{result_coll}", 'scr')
+            # else:
+            #     result_error.put_msg(f"{i['_id']}\t{i['status']}\t"
+            #                          f"{i['requestType']}\t"
+            #                          f"flag:{flag_result}\t"
+            #                          f"{result_coll}", 'scr')
             count_list += 1
             # print(count_list, i, flag_result, result_coll)
         try:
