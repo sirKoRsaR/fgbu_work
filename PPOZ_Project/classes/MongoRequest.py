@@ -19,7 +19,7 @@ class MongoRequest(object):
         self.client = MongoClient(config.mongodb_conn)
         self.collection = self.mongo_connection(self.client, in_bd, in_collection)
         self.logger = LogForever.LogForever('MongoDB')
-        self.logger.put_msg(f'Class: {__name__}.{in_bd}.{in_collection} initialize', 'info')
+        # self.logger.put_msg(f'Class: {__name__}.{in_bd}.{in_collection} initialize', 'info')
 
     def mongo_req_starter(self):
         if self.param_list['MongoDB_req'] == '1':
@@ -34,7 +34,7 @@ class MongoRequest(object):
 
     def client_close(self):
         self.client.close()
-        self.logger.put_msg(f'Server PPOZ MongoDB close', 'info')
+        # self.logger.put_msg(f'Server PPOZ MongoDB close', 'info')
 
     # def mongo_request_list(self):
     # TODO Сделать автоматический сбор запросов

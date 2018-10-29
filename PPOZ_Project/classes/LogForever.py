@@ -3,7 +3,7 @@ import datetime
 import os
 
 
-class LogForever(object):
+class LogForever():
 
     def __init__(self, in_log_type, in_format=None):
         self.log_name = datetime.datetime.now().strftime("%Y-%m-%d") + '_' + in_log_type    # _%H-%M-%S
@@ -20,19 +20,20 @@ class LogForever(object):
             pass
         self.log_worker.addHandler(log_writer)
 
-    def put_msg(self, in_text, typet='info') -> object:
-        if typet == 'info':
+    def put_msg(self, in_text, in_type='info') -> object:
+        if in_type == 'info':
             self.log_worker.info(in_text)
-        elif typet == 'debug':
+        elif in_type == 'debug':
             self.log_worker.debug(in_text)
-        elif typet == 'warning':
+        elif in_type == 'warning':
             self.log_worker.warning(in_text)
-        elif typet == 'error':
+        elif in_type == 'error':
             self.log_worker.error(in_text)
-        elif typet == 'critical':
+        elif in_type == 'critical':
             self.log_worker.critical(in_text)
-        elif typet == 'scr':
+        elif in_type == 'scr':
             print(in_text)
+
 
 # logger = logging.Logger(name)
 #    logger.setLevel(logging.DEBUG)

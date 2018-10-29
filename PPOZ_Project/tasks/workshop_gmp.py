@@ -110,7 +110,7 @@ def task03_restart_inc_gmp():
 def task_repair_gmp_status():
     init = RepairMethod.RepairMethod()
     init.repair_gmp_status()
-
+    del init
 
 
     #     f1 = executor.submit(someClass.doSomething)

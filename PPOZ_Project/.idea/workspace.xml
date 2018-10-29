@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f870d8f-41d1-443e-8f9a-ee4b3bd9ea71" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Test/.idea/dictionaries/EvstigneevKA.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/CamundaAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/CamundaAPI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/LogForever.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/LogForever.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/MongoRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/MongoRequest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/RepairMethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/RepairMethod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/workshop_gmp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/workshop_gmp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Test/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Test/gmp_BK_send.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Test/gmp_BK_send.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test/send_to_mq_gmp_list_key.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Test/send_to_mq_gmp_list_key.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <ignored path="venv/" />
@@ -23,9 +27,10 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.44" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -33,7 +38,7 @@
           <entry key="cfg" value="2" />
           <entry key="iml" value="1" />
           <entry key="ipynb" value="2" />
-          <entry key="py" value="50" />
+          <entry key="py" value="51" />
           <entry key="sqlite3" value="1" />
           <entry key="xml" value="4" />
         </counts>
@@ -43,7 +48,7 @@
           <entry key="IDEA_MODULE" value="1" />
           <entry key="IPNB" value="2" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="50" />
+          <entry key="Python" value="51" />
           <entry key="SQL" value="1" />
           <entry key="XML" value="4" />
         </counts>
@@ -52,16 +57,16 @@
         <counts>
           <entry key="Python Console" value="11" />
           <entry key="cfg" value="1" />
-          <entry key="dummy" value="21" />
-          <entry key="py" value="36283" />
-          <entry key="txt" value="546" />
+          <entry key="dummy" value="27" />
+          <entry key="py" value="38610" />
+          <entry key="txt" value="552" />
           <entry key="xml" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="568" />
-          <entry key="Python" value="36294" />
+          <entry key="PLAIN_TEXT" value="580" />
+          <entry key="Python" value="38621" />
           <entry key="XML" value="60" />
         </counts>
       </usages-collector>
@@ -81,33 +86,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
+        <entry file="file://$PROJECT_DIR$/test2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="194" column="4" lean-forward="true" selection-start-line="194" selection-start-column="4" selection-end-line="207" selection-end-column="27" />
+            <state relative-caret-position="-296">
+              <caret line="52" column="15" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="15" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+                <marker date="1540828126950" expanded="true" signature="25219:25245" ph="..." />
+                <marker date="1540828126950" expanded="true" signature="26280:26551" ph="..." />
               </folding>
             </state>
           </provider>
@@ -116,13 +111,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3009">
+            <state relative-caret-position="640">
               <caret line="183" column="52" selection-start-line="183" selection-start-column="29" selection-end-line="183" selection-end-column="52" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1540385307454" expanded="true" signature="1143:1243" ph="..." />
-                <marker date="1540385307454" expanded="true" signature="1764:1769" ph="..." />
-                <marker date="1540385307454" expanded="true" signature="6284:7278" ph="..." />
+                <marker date="1540826412853" expanded="true" signature="1145:1247" ph="..." />
+                <marker date="1540826412853" expanded="true" signature="1768:1773" ph="..." />
+                <marker date="1540826412853" expanded="true" signature="6288:7282" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,7 +138,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="646">
               <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
@@ -140,24 +147,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/workshop_gmp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" column="48" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="48" />
+            <state relative-caret-position="333">
+              <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <marker date="1540469278844" expanded="true" signature="4069:4070" ph="..." />
-                <marker date="1540469278844" expanded="true" signature="4892:4962" ph="..." />
-                <marker date="1540469278844" expanded="true" signature="4962:4968" ph="..." />
-                <marker date="1540469278844" expanded="true" signature="5767:6194" ph="..." />
+                <marker date="1540821738430" expanded="true" signature="4069:4070" ph="..." />
+                <marker date="1540821738430" expanded="true" signature="4897:4974" ph="..." />
+                <marker date="1540821738430" expanded="true" signature="4974:4980" ph="..." />
+                <marker date="1540821738430" expanded="true" signature="5779:6206" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo/cursor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="611" selection-start-line="611" selection-end-line="611" />
             </state>
           </provider>
         </entry>
@@ -165,15 +163,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/RepairMethod.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="36" column="31" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="31" />
+            <state relative-caret-position="453">
+              <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1540465629066" expanded="true" signature="261:262" ph="..." />
-                <marker date="1540465629066" expanded="true" signature="760:1351" ph="..." />
-                <marker date="1540465629066" expanded="true" signature="5955:5956" ph="..." />
-                <marker date="1540465629066" expanded="true" signature="5955:6977" ph="..." />
-                <marker date="1540465629066" expanded="true" signature="7031:7040" ph="..." />
+                <marker date="1540827925109" expanded="true" signature="261:262" ph="..." />
+                <marker date="1540827925109" expanded="true" signature="10083:10088" ph="..." />
+                <marker date="1540827925109" expanded="true" signature="10083:10982" ph="..." />
+                <marker date="1540827925109" expanded="true" signature="11036:11045" ph="..." />
               </folding>
             </state>
           </provider>
@@ -182,8 +179,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="33" />
+            <state relative-caret-position="323">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -221,7 +218,20 @@
       <find>defin</find>
       <find>gmpServiceRequestNumber</find>
       <find>server_api_ppoz</find>
+      <find>count</find>
+      <find>process</find>
+      <find>defi</find>
+      <find>late</find>
+      <find>activi</find>
+      <find>get_activity_instget_activity_inst</find>
+      <find>get_activity_inst</find>
+      <find>self.logger.put_msg</find>
+      <find>activity</find>
+      <find>get_box</find>
     </findStrings>
+    <replaceStrings>
+      <replace># self.logger.put_msg</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -252,22 +262,22 @@
         <option value="$PROJECT_DIR$/.idea/vcs.xml" />
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
         <option value="$PROJECT_DIR$/classes/TEST.py" />
-        <option value="$PROJECT_DIR$/classes/LogForever.py" />
         <option value="$PROJECT_DIR$/tasks/send_to_mq_gmp_listkey.py" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
         <option value="$PROJECT_DIR$/classes/MongoRequest.py" />
         <option value="$PROJECT_DIR$/test2.py" />
-        <option value="$PROJECT_DIR$/classes/RepairMethod.py" />
         <option value="$PROJECT_DIR$/start_process.py" />
         <option value="$PROJECT_DIR$/tasks/workshop_gmp.py" />
+        <option value="$PROJECT_DIR$/classes/LogForever.py" />
+        <option value="$PROJECT_DIR$/classes/RepairMethod.py" />
+        <option value="$PROJECT_DIR$/classes/CamundaAPI.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="446" />
+    <option name="x" value="124" />
     <option name="y" value="1" />
-    <option name="width" value="1444" />
+    <option name="width" value="1803" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -301,6 +311,11 @@
             <path>
               <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="PPOZ_Project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -675,14 +690,21 @@
       <option name="project" value="LOCAL" />
       <updated>1540402459967</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="repair">
+      <created>1540482249239</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1540482249239</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="446" y="1" width="1444" height="1055" extended-state="0" />
+    <frame x="124" y="1" width="1803" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28734" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22889519" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -767,7 +789,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="add repairMethod gmp" />
     <MESSAGE value="add repairMethod gmp++" />
-    <option name="LAST_COMMIT_MESSAGE" value="add repairMethod gmp++" />
+    <MESSAGE value="repair" />
+    <option name="LAST_COMMIT_MESSAGE" value="repair" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config.cfg">
@@ -806,23 +829,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/task01_gmp_ppoz_compare.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="88" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/task02_gmp_error.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="51" column="43" lean-forward="true" selection-start-line="5" selection-end-line="51" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/task01_gmp_ppoz_compare.py" />
+    <entry file="file://$PROJECT_DIR$/tasks/task02_gmp_error.py" />
     <entry file="file://$PROJECT_DIR$/Site/Site/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-765" />
@@ -845,9 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -879,9 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <marker date="1540282505280" expanded="true" signature="50:64" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -889,109 +891,101 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-295">
           <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/send_to_mq_gmp_listkey.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="194" column="4" lean-forward="true" selection-start-line="194" selection-start-column="4" selection-end-line="207" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/RepairMethod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <marker date="1540465629066" expanded="true" signature="261:262" ph="..." />
-            <marker date="1540465629066" expanded="true" signature="760:1351" ph="..." />
-            <marker date="1540465629066" expanded="true" signature="5955:5956" ph="..." />
-            <marker date="1540465629066" expanded="true" signature="5955:6977" ph="..." />
-            <marker date="1540465629066" expanded="true" signature="7031:7040" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/send_to_mq_gmp_listkey.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo/cursor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="1043">
           <caret line="611" selection-start-line="611" selection-end-line="611" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3009">
-          <caret line="183" column="52" selection-start-line="183" selection-start-column="29" selection-end-line="183" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1540385307454" expanded="true" signature="1143:1243" ph="..." />
-            <marker date="1540385307454" expanded="true" signature="1764:1769" ph="..." />
-            <marker date="1540385307454" expanded="true" signature="6284:7278" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/workshop_gmp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="48" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <marker date="1540469278844" expanded="true" signature="4069:4070" ph="..." />
-            <marker date="1540469278844" expanded="true" signature="4892:4962" ph="..." />
-            <marker date="1540469278844" expanded="true" signature="4962:4968" ph="..." />
-            <marker date="1540469278844" expanded="true" signature="5767:6194" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MongoRequest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="183" column="52" selection-start-line="183" selection-start-column="29" selection-end-line="183" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1540826412853" expanded="true" signature="1145:1247" ph="..." />
+            <marker date="1540826412853" expanded="true" signature="1768:1773" ph="..." />
+            <marker date="1540826412853" expanded="true" signature="6288:7282" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/workshop_gmp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <marker date="1540821738430" expanded="true" signature="4069:4070" ph="..." />
+            <marker date="1540821738430" expanded="true" signature="4897:4974" ph="..." />
+            <marker date="1540821738430" expanded="true" signature="4974:4980" ph="..." />
+            <marker date="1540821738430" expanded="true" signature="5779:6206" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/LogForever.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/RepairMethod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1540827925109" expanded="true" signature="261:262" ph="..." />
+            <marker date="1540827925109" expanded="true" signature="10083:10088" ph="..." />
+            <marker date="1540827925109" expanded="true" signature="10083:10982" ph="..." />
+            <marker date="1540827925109" expanded="true" signature="11036:11045" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/CamundaAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-296">
+          <caret line="52" column="15" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1540828126950" expanded="true" signature="25219:25245" ph="..." />
+            <marker date="1540828126950" expanded="true" signature="26280:26551" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

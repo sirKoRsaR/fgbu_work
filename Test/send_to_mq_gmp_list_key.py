@@ -35,14 +35,16 @@ if __name__ == '__main__':
         for key in file:
             result_key_id = rapi.get_id(url, key.strip())	
             if result_key_id is None:    
-                body = str(json.dumps({"businessKey":key.strip()}))
-                sendMessage(broker, port, '/queue/gmpBpmIn', body, {'command': 'ru.atc.rosreestr.cmd.StartProcessCommand'})			
+                body = str(json.dumps({"businessKey": key.strip()}))
+                sendMessage(broker, port, '/queue/gmpBpmIn', body,
+                            {'command': 'ru.atc.rosreestr.cmd.StartProcessCommand'})
             else:				
                 logging.info('ID_camunda_bad: %s BK: %s' % (result_key_id, key))	
                 result_cancel = rapi.cancel_id(url, result_key_id)        
                 logging.info('BK: %s Result_cancel_pid_camunda: %s' % (key, result_cancel))		
                 body = str(json.dumps({"businessKey":key.strip()}))
-                sendMessage(broker, port, '/queue/gmpBpmIn', body, {'command': 'ru.atc.rosreestr.cmd.StartProcessCommand'})				
+                sendMessage(broker, port, '/queue/gmpBpmIn', body,
+                            {'command': 'ru.atc.rosreestr.cmd.StartProcessCommand'})
         file.close()
 
 
